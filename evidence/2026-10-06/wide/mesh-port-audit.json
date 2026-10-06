@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "ports": [
+    {
+      "index": 1,
+      "area_mm2": 0.039999999999999994,
+      "triangles": 22,
+      "field_tet_adjacency": 2,
+      "signal": {
+        "attribute": 11,
+        "shared_node_count": 4
+      },
+      "reference": {
+        "attribute": 14,
+        "shared_node_count": 4
+      }
+    },
+    {
+      "index": 2,
+      "area_mm2": 0.039999999999999994,
+      "triangles": 22,
+      "field_tet_adjacency": 2,
+      "signal": {
+        "attribute": 11,
+        "shared_node_count": 4
+      },
+      "reference": {
+        "attribute": 14,
+        "shared_node_count": 4
+      }
+    },
+    {
+      "index": 3,
+      "area_mm2": 0.039999999999999994,
+      "triangles": 22,
+      "field_tet_adjacency": 2,
+      "signal": {
+        "attribute": 12,
+        "shared_node_count": 4
+      },
+      "reference": {
+        "attribute": 14,
+        "shared_node_count": 4
+      }
+    },
+    {
+      "index": 4,
+      "area_mm2": 0.039999999999999994,
+      "triangles": 22,
+      "field_tet_adjacency": 2,
+      "signal": {
+        "attribute": 12,
+        "shared_node_count": 4
+      },
+      "reference": {
+        "attribute": 14,
+        "shared_node_count": 4
+      }
+    }
+  ]
+}

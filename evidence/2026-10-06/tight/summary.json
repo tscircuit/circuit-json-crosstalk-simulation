@@ -1,0 +1,108 @@
+{
+  "native_status": "completed",
+  "checks_status": "passed",
+  "source_csv": "postpro/port-S.csv",
+  "csv_sha256": "802b16eaa3d6ebbcc7d09cd1c9d28679b79df6a1ee69b3f3cd5b13c4b4a381d4",
+  "port_order": [
+    "signal_1_near",
+    "signal_1_far",
+    "signal_2_near",
+    "signal_2_far"
+  ],
+  "independent_converged_excitations": 4,
+  "gmres_iterations": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "s_parameters": [
+    {
+      "frequency_hz": 1000000000.0,
+      "real": [
+        [
+          -0.0034390334469211257,
+          0.9852850659936305,
+          0.009469921983683682,
+          0.0015325411266998137
+        ],
+        [
+          0.985285065995407,
+          -0.0033300367725267203,
+          0.0015222105439076218,
+          0.009502128750590758
+        ],
+        [
+          0.009469921983825414,
+          0.0015222105431160556,
+          -0.003268772697623161,
+          0.9854346999787328
+        ],
+        [
+          0.0015325411273602548,
+          0.009502128750622887,
+          0.985434699977812,
+          -0.003212257127233873
+        ]
+      ],
+      "imag": [
+        [
+          -0.020135539783394704,
+          -0.15867595823735664,
+          0.058727094135541,
+          0.0021649104859663977
+        ],
+        [
+          -0.15867595823736047,
+          -0.020153752692745094,
+          0.0021682096895225345,
+          0.05872210245719836
+        ],
+        [
+          0.058727094136419945,
+          0.0021682096897726816,
+          -0.019352487001786597,
+          -0.1578466494118933
+        ],
+        [
+          0.002164910486213495,
+          0.05872210245733192,
+          -0.15784664941185164,
+          -0.019360841773542335
+        ]
+      ],
+      "maximum_singular_value": 0.9999948483783466,
+      "maximum_reciprocity_residual": 1.77647199094907e-12,
+      "column_powers": [
+        0.9999275744373437,
+        0.9999275779111221,
+        0.9999278855451912,
+        0.9999278847302717
+      ],
+      "checks_status": "passed"
+    }
+  ],
+  "fields": [
+    {
+      "source": "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu",
+      "native_sha256": "7278a2ff50be6374b96f4c27d53df6d06f687754e4b2f65bf7dba3a79bd2017f",
+      "reader_conversion": "Derived VTU version marker 2.2 -> 1.0 only; arrays unchanged",
+      "frequency_hz": 1000000000,
+      "excitation": 1,
+      "normalization": "unit incident power",
+      "x_plane_mm": 0.0,
+      "color_limits_v_per_m": [
+        49.429502563476575,
+        77707.14972656251
+      ],
+      "interpolation": "Linear tetrahedron corner samples; section polygon mean complex vector",
+      "section_polygons": 394,
+      "quantity": "norm(E_real + i E_imag)",
+      "unit": "V/m",
+      "solved_data": true
+    }
+  ],
+  "mesh_convergence": "not_evaluated",
+  "truncation_convergence": "not_evaluated",
+  "interpretation": "Finite synthetic PEC fixture smoke; no broadband, IC, eye, manufacturing or DDR timing qualification."
+}

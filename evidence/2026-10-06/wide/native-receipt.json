@@ -1,0 +1,47 @@
+{
+  "native_status": "passed",
+  "solver_status": "passed",
+  "issues": [],
+  "commands": [
+    {
+      "stage": "mesh",
+      "argv": [
+        "${PALACE_PYTHON}",
+        "python/mesh.py",
+        "${OUTPUT_DIRECTORY}"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "palace",
+      "argv": [
+        "${PALACE_BIN}",
+        "palace.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "results",
+      "argv": [
+        "${PALACE_PYTHON}",
+        "python/results.py",
+        "${OUTPUT_DIRECTORY}"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "mpi_ranks": 1,
+  "threads": 1,
+  "started_at_utc": "2026-10-06T13:35:00.503125+00:00",
+  "peak_aggregate_rss_bytes": 553926656,
+  "budget": {
+    "seconds": 300,
+    "memory_bytes": 6442450944,
+    "disk_bytes": 8589934592
+  },
+  "palace_binary_sha256": "6cb2750c6bebb97bc8aa24129618ef2933e81e47c424edb015abd5dd81847fff",
+  "working_disk_bytes": 28468388,
+  "elapsed_seconds": 13.316212584031746,
+  "finished_at_utc": "2026-10-06T13:35:13.819347+00:00",
+  "path_sanitization": "Only local executable/adapter/output absolute argv paths replaced with portable placeholders; measurements/statuses unchanged."
+}

@@ -1,0 +1,11 @@
+{
+  "gmsh_version": "4.13.1",
+  "field_tetrahedra": 14712,
+  "minimum_sicn": 0.04638063265269534,
+  "copper_volume_mm3": 0.45080000000000015,
+  "dielectric_volume_mm3": 2.88,
+  "geometry_approximation_mm": 0,
+  "elapsed_seconds": 0.6121709579601884,
+  "conductor_interiors": "excluded",
+  "status": "passed"
+}

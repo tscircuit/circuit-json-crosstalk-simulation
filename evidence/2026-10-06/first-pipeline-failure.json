@@ -1,0 +1,48 @@
+{
+  "native_status": "failed",
+  "issues": [
+    "results exited 1; see results.log"
+  ],
+  "commands": [
+    {
+      "stage": "mesh",
+      "argv": [
+        "${PALACE_PYTHON}",
+        "python/mesh.py",
+        "${OUTPUT_DIRECTORY}"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "palace",
+      "argv": [
+        "${PALACE_BIN}",
+        "palace.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "results",
+      "argv": [
+        "${PALACE_PYTHON}",
+        "python/results.py",
+        "${OUTPUT_DIRECTORY}"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "mpi_ranks": 1,
+  "threads": 1,
+  "started_at_utc": "2026-10-06T13:30:42.105827+00:00",
+  "peak_aggregate_rss_bytes": 541442048,
+  "budget": {
+    "seconds": 300,
+    "memory_bytes": 6442450944,
+    "disk_bytes": 8589934592
+  },
+  "palace_binary_sha256": "6cb2750c6bebb97bc8aa24129618ef2933e81e47c424edb015abd5dd81847fff",
+  "working_disk_bytes": 27893115,
+  "elapsed_seconds": 13.285568790975958,
+  "finished_at_utc": "2026-10-06T13:30:55.391424+00:00",
+  "explanation": "First native Palace stage exited zero with four converged excitations; postprocess rejected singular iteration spelling. Original receipt preserved; later fresh runs passed. Absolute local argv paths sanitized."
+}

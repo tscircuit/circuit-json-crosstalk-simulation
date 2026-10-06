@@ -1,0 +1,54 @@
+[
+  {
+    "portIndex": 1,
+    "apertureAreaMm2": 0.04,
+    "embeddedContactCurves": [
+      {
+        "side": "reference",
+        "curve": 61,
+        "conductorFace": 68
+      }
+    ],
+    "signalContactLengthMm": 0.19999999999999996,
+    "referenceContactLengthMm": 0.19999999999999996
+  },
+  {
+    "portIndex": 2,
+    "apertureAreaMm2": 0.04,
+    "embeddedContactCurves": [
+      {
+        "side": "reference",
+        "curve": 65,
+        "conductorFace": 68
+      }
+    ],
+    "signalContactLengthMm": 0.19999999999999996,
+    "referenceContactLengthMm": 0.19999999999999996
+  },
+  {
+    "portIndex": 3,
+    "apertureAreaMm2": 0.04,
+    "embeddedContactCurves": [
+      {
+        "side": "reference",
+        "curve": 69,
+        "conductorFace": 68
+      }
+    ],
+    "signalContactLengthMm": 0.19999999999999996,
+    "referenceContactLengthMm": 0.19999999999999996
+  },
+  {
+    "portIndex": 4,
+    "apertureAreaMm2": 0.04,
+    "embeddedContactCurves": [
+      {
+        "side": "reference",
+        "curve": 73,
+        "conductorFace": 68
+      }
+    ],
+    "signalContactLengthMm": 0.19999999999999996,
+    "referenceContactLengthMm": 0.19999999999999996
+  }
+]

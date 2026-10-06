@@ -1,0 +1,50 @@
+[
+  {
+    "index": 1,
+    "x_mm": -1.6,
+    "y_min_mm": -0.6,
+    "y_max_mm": -0.4,
+    "width_mm": 0.2,
+    "signal_z_mm": 0.235,
+    "reference_z_mm": 0.035,
+    "signal_net": "source_trace_4",
+    "reference_net": "source_net_0",
+    "signal_attribute": 11
+  },
+  {
+    "index": 2,
+    "x_mm": 1.6,
+    "y_min_mm": -0.6,
+    "y_max_mm": -0.4,
+    "width_mm": 0.2,
+    "signal_z_mm": 0.235,
+    "reference_z_mm": 0.035,
+    "signal_net": "source_trace_4",
+    "reference_net": "source_net_0",
+    "signal_attribute": 11
+  },
+  {
+    "index": 3,
+    "x_mm": -1.6,
+    "y_min_mm": 0.4,
+    "y_max_mm": 0.6,
+    "width_mm": 0.2,
+    "signal_z_mm": 0.235,
+    "reference_z_mm": 0.035,
+    "signal_net": "source_trace_5",
+    "reference_net": "source_net_0",
+    "signal_attribute": 12
+  },
+  {
+    "index": 4,
+    "x_mm": 1.6,
+    "y_min_mm": 0.4,
+    "y_max_mm": 0.6,
+    "width_mm": 0.2,
+    "signal_z_mm": 0.235,
+    "reference_z_mm": 0.035,
+    "signal_net": "source_trace_5",
+    "reference_net": "source_net_0",
+    "signal_attribute": 12
+  }
+]

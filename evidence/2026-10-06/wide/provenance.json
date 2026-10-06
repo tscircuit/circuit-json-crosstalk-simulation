@@ -1,0 +1,14 @@
+{
+  "circuit_sha256": "736c8418f07355ff3aa2e97a60300745c245c1913e7ad92a21f6140d07e776f4",
+  "adapter": "straight_pair_palace",
+  "notices": [
+    "PEC is an explicit analysis approximation: supplied conductivity is preserved but ohmic copper loss is omitted.",
+    "Er and loss tangent are held constant at the supplied values; their distinct physical reference frequencies are preserved.",
+    "Nonmagnetic materials and omitted soldermask are explicit setup assumptions. Board material labels do not supply constants.",
+    "Four internal lumped taps leave open end stubs; 50-ohm normalization is not an IC driver/load model.",
+    "Finite board and actual reference-pour boundaries are retained. No whole-board ground is synthesized."
+  ],
+  "native_status": "passed",
+  "mesh_convergence": "not_evaluated",
+  "truncation_convergence": "not_evaluated"
+}
