@@ -2,5 +2,5 @@
   "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
   "formatter": { "indentStyle": "space" },
   "javascript": { "formatter": { "semicolons": "asNeeded" } },
-  "files": { "includes": ["**", "!work/**", "!evidence/**"] }
+  "files": { "includes": ["**", "!work/**", "!output/**"] }
 }

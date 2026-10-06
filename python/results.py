@@ -1,6 +1,5 @@
-"""Audit/plot saved native outputs only; no analytical or synthetic S/field fallback."""
+"""Read and plot actual Palace outputs; no synthetic S/field fallback."""
 import csv
-import hashlib
 import itertools
 import json
 import os
@@ -53,7 +52,7 @@ def plot_field(directory, frequency_hz):
     cache.mkdir(exist_ok=True)
     derived = cache/'reader-compatible.vtu'
     # Meshio 5.3.5 rejects MFEM's 2.2 marker. Change only that marker in a derived
-    # reader copy; preserve original native arrays/file and record both hashes.
+    # reader copy; preserve the original native arrays/file.
     derived.write_bytes(raw.replace(b'version="2.2"',b'version="1.0"',1))
     mesh = meshio.read(derived)
     field = mesh.point_data['E_real'] + 1j*mesh.point_data['E_imag']
@@ -92,7 +91,7 @@ def plot_field(directory, frequency_hz):
     ax.set_title(f'Native Palace |E|; {frequency_hz/1e9:g} GHz; excitation 1; X={plane:g} mm\nUnit incident power normalization, not an IC voltage drive')
     fig.colorbar(collection,ax=ax,label='|E| (V/m), logarithmic percentile-clipped scale')
     fig.savefig(directory/'electric-field.png',dpi=150);plt.close(fig)
-    return {'source':str(source.relative_to(directory)),'native_sha256':hashlib.sha256(raw).hexdigest(),
+    return {'source':str(source.relative_to(directory)),
             'reader_conversion':'Derived VTU version marker 2.2 -> 1.0 only; arrays unchanged',
             'frequency_hz':frequency_hz,'excitation':1,'normalization':'unit incident power','x_plane_mm':plane,'color_limits_v_per_m':limits.tolist(),
             'interpolation':'Linear tetrahedron corner samples; section polygon mean complex vector',
@@ -126,7 +125,7 @@ def process(directory):
     fig.colorbar(image,ax=ax);fig.savefig(directory/'s-matrix.png',dpi=150);plt.close(fig)
     fields = [plot_field(directory,setup['save_fields_at_hz'][0])] if setup['save_fields_at_hz'] else []
     summary = {'native_status':'completed','checks_status':'passed' if all(m['checks_status']=='passed' for m in matrices) else 'failed',
-               'source_csv':'postpro/port-S.csv','csv_sha256':hashlib.sha256((directory/'postpro/port-S.csv').read_bytes()).hexdigest(),
+               'source_csv':'postpro/port-S.csv',
                'port_order':['signal_1_near','signal_1_far','signal_2_near','signal_2_far'],
                'independent_converged_excitations':len(converged),'gmres_iterations':list(map(int,converged)),
                's_parameters':matrices,'fields':fields,'mesh_convergence':'not_evaluated','truncation_convergence':'not_evaluated',

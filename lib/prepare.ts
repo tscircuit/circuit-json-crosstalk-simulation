@@ -196,12 +196,7 @@ function checkSetup(s: AnalysisSetup) {
     unsupported(
       "Solver tolerance must be < 1 and max_iterations a positive integer",
     )
-  for (const key of [
-    "passivity_tolerance",
-    "reciprocity_tolerance",
-    "convergence_relative",
-    "convergence_absolute",
-  ] as const)
+  for (const key of ["passivity_tolerance", "reciprocity_tolerance"] as const)
     nonnegative(s.checks?.[key], `checks.${key}`)
   if (
     !Array.isArray(s.frequency_hz) ||

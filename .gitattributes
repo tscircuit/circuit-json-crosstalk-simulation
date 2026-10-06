@@ -1,2 +1,0 @@
-# Preserve native stdout byte-for-byte, including its final blank line.
-evidence/**/palace.log whitespace=-blank-at-eof

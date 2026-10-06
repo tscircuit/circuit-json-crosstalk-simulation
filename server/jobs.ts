@@ -2,7 +2,7 @@ import { mkdir, stat } from "node:fs/promises"
 import { join } from "node:path"
 import { renderCoupledRoutes } from "../examples/coupled-routes"
 import { exampleSetup } from "../examples/setup"
-import { analyzeCrosstalk, type AnalysisResult, type Runtime } from "../lib"
+import { simulate, type AnalysisResult } from "../index"
 
 export const fixtures = {
   tight: { gap: 0.1, mesh: 0.08, label: "Tight: 0.1 mm gap" },
@@ -153,18 +153,14 @@ export class Jobs {
   }
 }
 
-export function nativeExecutor(runtime: Runtime): Execute {
-  return async (fixture, output, signal) => {
-    const selected = fixtures[fixture]
-    const circuitJson = await renderCoupledRoutes(selected.gap)
-    const setup = exampleSetup(circuitJson)
-    setup.mesh.near_mm = selected.mesh
-    return analyzeCrosstalk(circuitJson, {
-      output_directory: output,
-      setup,
-      mode: "native",
-      runtime,
-      signal,
-    })
-  }
+export const nativeExecutor: Execute = async (fixture, output, signal) => {
+  const selected = fixtures[fixture]
+  const circuitJson = await renderCoupledRoutes(selected.gap)
+  const setup = exampleSetup(circuitJson)
+  setup.mesh.near_mm = selected.mesh
+  return simulate(circuitJson, {
+    output_directory: output,
+    setup,
+    signal,
+  })
 }

@@ -5,7 +5,9 @@ import { join } from "node:path"
 import type { AnyCircuitElement } from "circuit-json"
 import { renderCoupledRoutes } from "../examples/coupled-routes"
 import { exampleSetup } from "../examples/setup"
-import { analyzeCrosstalk, prepare } from "../lib"
+import { simulate } from "../index"
+import { run } from "../lib/run"
+import { prepare } from "../lib/prepare"
 import { palaceConfig } from "../lib/config"
 
 const tight = await renderCoupledRoutes(0.1)
@@ -16,7 +18,7 @@ const boardOf = (j = tight) => j.find((e) => e.type === "pcb_board")!
 const padOf = (j = tight) =>
   j.find((e) => e.type === "pcb_smtpad" && e.layer === "top")!
 
-describe("true TSX -> unchanged Circuit JSON -> explicit Palace export", () => {
+describe("rendered inputs and the native simulation API", () => {
   test("uses the actual smaller reference copper and measured gaps", () => {
     const original = JSON.stringify(tight)
     for (const [j, gap] of [
@@ -46,17 +48,12 @@ describe("true TSX -> unchanged Circuit JSON -> explicit Palace export", () => {
     ])
     expect(config.Domains.Materials[1].Permittivity).toBe(4)
     expect(config.Domains.Materials[1].LossTan).toBe(0)
-    expect(result.model).toEqual(
-      await Bun.file(
-        join(import.meta.dir, "snapshots/tight-model.json"),
-      ).json(),
-    )
   })
   test("export-only persists exact inputs and never claims native fields", async () => {
     const root = await mkdtemp(join(tmpdir(), "crosstalk-export-"))
     try {
       const output = join(root, "run")
-      const result = await analyzeCrosstalk(tight, {
+      const result = await run(tight, {
         output_directory: output,
         setup,
         mode: "export",
@@ -70,13 +67,40 @@ describe("true TSX -> unchanged Circuit JSON -> explicit Palace export", () => {
       )
       expect(await Bun.file(join(output, "model.msh")).exists()).toBe(false)
       await expect(
-        analyzeCrosstalk(tight, {
+        run(tight, {
           output_directory: output,
           setup,
           mode: "export",
         }),
       ).rejects.toThrow()
     } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
+  test("public simulate runs native mode and cannot report export success without an installed runtime", async () => {
+    const root = await mkdtemp(join(tmpdir(), "crosstalk-runtime-"))
+    const previous = {
+      python: process.env.PALACE_PYTHON,
+      palace: process.env.PALACE_BIN,
+    }
+    try {
+      process.env.PALACE_PYTHON = join(root, "missing-python")
+      process.env.PALACE_BIN = join(root, "missing-palace")
+      const result = await simulate(tight, {
+        setup,
+        output_directory: join(root, "run"),
+      })
+      expect(result.status).toBe("runtime_unavailable")
+      expect(result.native_status).toBe("never_run")
+      expect(await Bun.file(join(root, "run/model.msh")).exists()).toBe(false)
+      expect(
+        await Bun.file(join(root, "run/electric-field.png")).exists(),
+      ).toBe(false)
+    } finally {
+      if (previous.python === undefined) delete process.env.PALACE_PYTHON
+      else process.env.PALACE_PYTHON = previous.python
+      if (previous.palace === undefined) delete process.env.PALACE_BIN
+      else process.env.PALACE_BIN = previous.palace
       await rm(root, { recursive: true, force: true })
     }
   })

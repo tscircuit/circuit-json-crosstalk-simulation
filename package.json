@@ -3,15 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "exports": "./lib/index.ts",
+  "exports": "./index.ts",
   "license": "MIT",
   "scripts": {
     "serve": "bun server/index.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "format:check": "biome format .",
-    "example": "bun scripts/run-example.tsx",
-    "analyze": "bun scripts/analyze.ts"
+    "simulate": "bun run.tsx"
   },
   "dependencies": {
     "circuit-json": "https://pkg.pr.new/circuit-json@8876d64"

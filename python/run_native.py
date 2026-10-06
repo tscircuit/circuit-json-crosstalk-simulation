@@ -1,6 +1,5 @@
 """Serialize and bound a complete mesh -> Palace -> postprocess pipeline."""
 import datetime
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -19,8 +18,6 @@ def run(directory):
     receipt = {'native_status':'never_run','solver_status':'never_run','issues':[], 'commands':[], 'mpi_ranks':1,'threads':1,
                'started_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                'peak_aggregate_rss_bytes':0,'budget':{k:runtime[k] for k in ['seconds','memory_bytes','disk_bytes']}}
-    receipt['adapter_source_sha256'] = {name:hashlib.sha256((root/name).read_bytes()).hexdigest()
-                                       for name in ['run_native.py','mesh.py','cad_identity.py','results.py']}
     acquired, process = False, None
     def stop(_signal, _frame):
         raise InterruptedError('Native pipeline interrupted')
@@ -34,7 +31,6 @@ def run(directory):
             (lock/'owner.json').write_text(json.dumps({'owner':'circuit-json-crosstalk-simulation','token':token,'pid':os.getpid(),'job':directory.parent.name})+'\n')
         finally:
             signal.pthread_sigmask(signal.SIG_SETMASK,previous_mask)
-        receipt['palace_binary_sha256'] = hashlib.sha256(Path(runtime['palace']).read_bytes()).hexdigest()
         for stage, command in [('mesh',[runtime['python'],str(root/'mesh.py'),str(directory)]),
                                ('palace',[runtime['palace'],'palace.json']),
                                ('results',[runtime['python'],str(root/'results.py'),str(directory)])]:

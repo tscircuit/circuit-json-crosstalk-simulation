@@ -1,16 +1,13 @@
 import { mkdir, stat } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
-import { createHash } from "node:crypto"
 import { prepare } from "./prepare"
 import { geometrySvg, palaceConfig } from "./config"
 import type { AnalyzeOptions, AnalysisResult, CircuitJson } from "./types"
-export { prepare } from "./prepare"
-export type * from "./types"
 
 const json = (value: unknown) => JSON.stringify(value, null, 2) + "\n"
 
-/** Bun API. Export is deterministic and never represents a completed solver run. */
-export async function analyzeCrosstalk(
+/** Internal runner; export mode is used by lightweight input tests. */
+export async function run(
   circuitJson: CircuitJson,
   options: AnalyzeOptions,
 ): Promise<AnalysisResult> {
@@ -50,15 +47,6 @@ export async function analyzeCrosstalk(
     native_status: "never_run",
     convergence_status: "not_evaluated",
   }
-  const provenance = {
-    circuit_sha256: createHash("sha256").update(input).digest("hex"),
-    adapter: "straight_pair_palace",
-    notices: preflight.model.notices,
-    native_status: "never_run",
-    mesh_convergence: "not_evaluated",
-    truncation_convergence: "not_evaluated",
-  }
-  await write("provenance.json", provenance)
   if (options.mode === "export") {
     await write("result.json", result)
     return result
@@ -142,10 +130,6 @@ export async function analyzeCrosstalk(
       if (options.signal?.aborted) result.status = "cancelled"
     }
   }
-  await write("provenance.json", {
-    ...provenance,
-    native_status: result.native_status,
-  })
   await write("result.json", result)
   return result
 }

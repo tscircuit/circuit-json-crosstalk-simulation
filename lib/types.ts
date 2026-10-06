@@ -30,8 +30,6 @@ export interface AnalysisSetup {
   checks: {
     passivity_tolerance: number
     reciprocity_tolerance: number
-    convergence_relative: number
-    convergence_absolute: number
   }
 }
 
@@ -102,7 +100,7 @@ export interface AnalysisResult {
     | "cancelled"
   output_directory?: string
   issues: string[]
-  /** An export is geometry/configuration evidence; no solver-derived fields exist yet. */
+  /** A prepared input is not a completed native solve. */
   native_status: "never_run" | "passed" | "failed"
   convergence_status: "not_evaluated"
 }

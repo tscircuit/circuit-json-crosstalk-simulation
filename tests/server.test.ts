@@ -3,7 +3,7 @@ import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises"
 import { join } from "node:path"
 import { tmpdir } from "node:os"
 import { startServer } from "../server"
-import type { AnalysisResult } from "../lib"
+import type { AnalysisResult } from "../index"
 import type { Execute } from "../server/jobs"
 
 const complete: AnalysisResult = {

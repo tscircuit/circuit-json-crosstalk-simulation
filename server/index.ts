@@ -1,7 +1,6 @@
 import { lstat, mkdir, realpath } from "node:fs/promises"
 import { join, resolve } from "node:path"
 import { artifacts, fixtures, Jobs, nativeExecutor, type Execute } from "./jobs"
-import type { Runtime } from "../lib"
 
 export async function startServer(options: {
   root: string
@@ -140,19 +139,10 @@ if (import.meta.main) {
   const port = Number(process.env.PALACE_WEB_PORT ?? 3217)
   if (!Number.isInteger(port) || port < 1024 || port > 65535)
     throw new Error("PALACE_WEB_PORT must be 1024–65535")
-  const runtime: Runtime = {
-    python: process.env.PALACE_PYTHON ?? "",
-    palace: process.env.PALACE_BIN ?? "",
-    seconds: 90,
-    memory_bytes: 6 * 1024 ** 3,
-    disk_bytes: 256 * 1024 ** 2,
-    lock_directory:
-      process.env.PALACE_HEAVY_LOCK ?? "/tmp/dot-cloud-heavy.lock",
-  }
   const app = await startServer({
-    root: resolve(import.meta.dir, "../work/web-jobs"),
+    root: resolve(import.meta.dir, "../output/web"),
     port,
-    execute: nativeExecutor(runtime),
+    execute: nativeExecutor,
   })
   console.log(
     `Palace local Run UI: ${app.url}\nFixed TSX fixtures only; real native jobs, one at a time. Ctrl-C stops owned work safely.`,

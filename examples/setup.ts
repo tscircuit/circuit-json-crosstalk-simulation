@@ -1,6 +1,6 @@
 import type { AnalysisSetup, CircuitJson } from "../lib/types"
 
-/** Deliberate fixture testbench, not defaults inside analyzeCrosstalk. */
+/** Explicit testbench for the synthetic example; separate from board data. */
 export function exampleSetup(circuitJson: CircuitJson): AnalysisSetup {
   const traces = circuitJson.filter((e) => e.type === "pcb_trace")
   const pours = circuitJson.filter((e) => e.type === "pcb_copper_pour")
@@ -25,8 +25,6 @@ export function exampleSetup(circuitJson: CircuitJson): AnalysisSetup {
     checks: {
       passivity_tolerance: 1e-4,
       reciprocity_tolerance: 1e-4,
-      convergence_relative: 0.05,
-      convergence_absolute: 0.005,
     },
   }
 }
