@@ -1,0 +1,30 @@
+{
+  "name": "circuit-json-crosstalk-simulation",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "serve": "bun server/index.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "format:check": "biome format .",
+    "simulate": "bun run.tsx"
+  },
+  "dependencies": {
+    "circuit-json": "https://pkg.pr.new/circuit-json@8876d64"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@tscircuit/core": "https://pkg.pr.new/tscircuit/core/@tscircuit/core@265b821",
+    "@types/bun": "1.3.14",
+    "@types/react": "19.2.15",
+    "react": "19.2.6",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "circuit-json": "https://pkg.pr.new/circuit-json@8876d64",
+    "@tscircuit/props": "https://pkg.pr.new/@tscircuit/props@9b7826e"
+  }
+}
