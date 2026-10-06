@@ -88,6 +88,7 @@ export interface AnalyzeOptions {
   setup?: AnalysisSetup
   mode: "export" | "native"
   runtime?: Runtime
+  signal?: AbortSignal
 }
 
 export interface AnalysisResult {
@@ -98,6 +99,7 @@ export interface AnalysisResult {
     | "runtime_unavailable"
     | "missing_data"
     | "unsupported"
+    | "cancelled"
   output_directory?: string
   issues: string[]
   /** An export is geometry/configuration evidence; no solver-derived fields exist yet. */

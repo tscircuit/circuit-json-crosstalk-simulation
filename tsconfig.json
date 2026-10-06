@@ -10,5 +10,5 @@
     "types": ["bun"],
     "lib": ["ESNext", "DOM"]
   },
-  "include": ["lib", "examples", "scripts", "tests"]
+  "include": ["lib", "examples", "scripts", "tests", "server"]
 }

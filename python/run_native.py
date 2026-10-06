@@ -27,9 +27,13 @@ def run(directory):
     signal.signal(signal.SIGTERM, stop)
     signal.signal(signal.SIGINT, stop)
     try:
-        lock.mkdir()
-        acquired = True
-        (lock/'owner.json').write_text(json.dumps({'owner':'circuit-json-crosstalk-simulation','token':token,'pid':os.getpid(),'job':directory.name})+'\n')
+        previous_mask = signal.pthread_sigmask(signal.SIG_BLOCK,{signal.SIGTERM,signal.SIGINT})
+        try:
+            lock.mkdir()
+            acquired = True
+            (lock/'owner.json').write_text(json.dumps({'owner':'circuit-json-crosstalk-simulation','token':token,'pid':os.getpid(),'job':directory.parent.name})+'\n')
+        finally:
+            signal.pthread_sigmask(signal.SIG_SETMASK,previous_mask)
         receipt['palace_binary_sha256'] = hashlib.sha256(Path(runtime['palace']).read_bytes()).hexdigest()
         for stage, command in [('mesh',[runtime['python'],str(root/'mesh.py'),str(directory)]),
                                ('palace',[runtime['palace'],'palace.json']),
@@ -70,20 +74,24 @@ def run(directory):
         receipt['issues'].append(str(error))
     finally:
         if process is not None and process.poll() is None:
-            os.killpg(process.pid,signal.SIGTERM)
+            try: os.killpg(process.pid,signal.SIGTERM)
+            except ProcessLookupError: pass
             try: process.wait(timeout=5)
             except subprocess.TimeoutExpired:
-                os.killpg(process.pid,signal.SIGKILL)
+                try: os.killpg(process.pid,signal.SIGKILL)
+                except ProcessLookupError: pass
                 process.wait()
         receipt['elapsed_seconds'] = time.monotonic()-started
         receipt['finished_at_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        (directory/'native-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
-        if acquired:
-            try:
-                if json.loads((lock/'owner.json').read_text()).get('token') == token:
-                    (lock/'owner.json').unlink()
-                    lock.rmdir()
-            except FileNotFoundError: pass
+        try:
+            (directory/'native-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+        finally:
+            if acquired:
+                try:
+                    if json.loads((lock/'owner.json').read_text()).get('token') == token:
+                        (lock/'owner.json').unlink()
+                        lock.rmdir()
+                except FileNotFoundError: pass
     return 0 if receipt['native_status'] == 'passed' else 1
 
 

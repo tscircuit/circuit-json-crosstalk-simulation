@@ -6,6 +6,7 @@
   "exports": "./lib/index.ts",
   "license": "MIT",
   "scripts": {
+    "serve": "bun server/index.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "format:check": "biome format .",

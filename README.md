@@ -20,6 +20,10 @@ Run `bun install --frozen-lockfile`, `bun test`, and `bun run typecheck`. `bun r
 
 The renderer/schema dependencies are pinned PR builds: core `265b821`, props `9b7826e`, and circuit-json `8876d64` (stackup PR #871). These are reproducible experimental dependencies, pending stable package releases.
 
+To watch an actual job, set `PALACE_BIN` and `PALACE_PYTHON` to the installed native runtimes and run `bun run serve`. Open **http://127.0.0.1:3217**, select a fixed fixture, and click **Run native simulation**. The page polls actual command logs while rendering, meshing, solving and postprocessing, then displays saved native images and links to the inputs, configuration, receipt and numerical summary. A finished job is labeled as a finished record; no progress percentages or recorded-log playback are presented as live. Its mesh/truncation status remains unevaluated, alongside the separate recorded failed refinement warning.
+
+The server binds loopback only. Requests require allowed Host/Origin values and a per-session token; launch accepts only a single allowlisted fixture name. HTTP cannot supply paths, commands, source code, material overrides or arbitrary mesh settings. One job is reserved before rendering; concurrent Run requests get 409. Cancellation signals the owned Python supervisor and waits for subprocess/lock cleanup. Only regular, owned, allowlisted artifact files are served. Each UI job is limited to 90 seconds, one rank/thread, 6 GiB aggregate RSS and 256 MiB output; a session permits 16 jobs. Existing output directories are preserved. HTTP lifecycle tests use isolated mocks and do not constitute native evidence.
+
 Only the following physical scope is supported:
 
 - One rectangular two-layer board with ordered top copper / dielectric / bottom copper.

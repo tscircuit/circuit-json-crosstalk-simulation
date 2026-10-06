@@ -14,6 +14,13 @@ export async function analyzeCrosstalk(
   circuitJson: CircuitJson,
   options: AnalyzeOptions,
 ): Promise<AnalysisResult> {
+  if (options.signal?.aborted)
+    return {
+      status: "cancelled",
+      issues: ["Cancelled before export"],
+      native_status: "never_run",
+      convergence_status: "not_evaluated",
+    }
   const preflight = prepare(circuitJson, options.setup)
   if (preflight.status !== "ready")
     return {
@@ -80,6 +87,8 @@ export async function analyzeCrosstalk(
           "Native runtime requires explicit bounded wall (<=600s), memory (<=6GiB), disk (<=8GiB) and shared lock",
         )
       await write("runtime.json", runtime)
+      if (options.signal?.aborted)
+        throw new Error("Cancelled before native execution")
       const child = Bun.spawn(
         [
           runtime.python,
@@ -97,7 +106,19 @@ export async function analyzeCrosstalk(
           },
         },
       )
+      let running = true
+      let cancelled = false
+      const cancel = () => {
+        if (running) {
+          cancelled = true
+          child.kill("SIGTERM")
+        }
+      }
+      options.signal?.addEventListener("abort", cancel, { once: true })
+      if (options.signal?.aborted) cancel()
       const exit = await child.exited
+      running = false
+      options.signal?.removeEventListener("abort", cancel)
       const receiptPath = `${output}/native-receipt.json`
       const receipt = (await Bun.file(receiptPath).exists())
         ? await Bun.file(receiptPath).json()
@@ -108,9 +129,17 @@ export async function analyzeCrosstalk(
           ? "native_passed"
           : "native_failed"
       result.issues = receipt?.issues ?? [`Native runner exited ${exit}`]
+      if (cancelled) {
+        result.status = "cancelled"
+        result.issues = [
+          "Cancelled; native supervisor cleanup completed",
+          ...result.issues,
+        ]
+      }
     } catch (error) {
       result.status = "runtime_unavailable"
       result.issues = [error instanceof Error ? error.message : String(error)]
+      if (options.signal?.aborted) result.status = "cancelled"
     }
   }
   await write("provenance.json", {
