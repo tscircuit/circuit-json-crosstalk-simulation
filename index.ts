@@ -22,7 +22,7 @@ export function simulate(
     runtime: {
       python: process.env.PALACE_PYTHON ?? Bun.which("python3") ?? "",
       palace: process.env.PALACE_BIN ?? Bun.which("palace") ?? "",
-      seconds: 90,
+      seconds: 600,
       memory_bytes: 6 * 1024 ** 3,
       disk_bytes: 256 * 1024 ** 2,
       lock_directory:
