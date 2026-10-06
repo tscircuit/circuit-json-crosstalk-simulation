@@ -129,7 +129,7 @@ def process(directory):
                'port_order':['signal_1_near','signal_1_far','signal_2_near','signal_2_far'],
                'independent_converged_excitations':len(converged),'gmres_iterations':list(map(int,converged)),
                's_parameters':matrices,'fields':fields,'mesh_convergence':'not_evaluated','truncation_convergence':'not_evaluated',
-               'interpretation':'Finite synthetic PEC fixture smoke; no broadband, IC, eye, manufacturing or DDR timing qualification.'}
+               'interpretation':'Native finite PEC fixture channel. This file alone is not an eye or IC/manufacturing/DDR timing qualification.'}
     (directory/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False)+'\n')
 
 

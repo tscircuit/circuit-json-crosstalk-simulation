@@ -5,6 +5,7 @@ import { join } from "node:path"
 import type { AnyCircuitElement } from "circuit-json"
 import { renderCoupledRoutes } from "../examples/coupled-routes"
 import { exampleSetup } from "../examples/setup"
+import { eyeConditions, eyeSetup } from "../examples/eye-setup"
 import { simulate } from "../index"
 import { run } from "../lib/run"
 import { prepare } from "../lib/prepare"
@@ -19,6 +20,42 @@ const padOf = (j = tight) =>
   j.find((e) => e.type === "pcb_smtpad" && e.layer === "top")!
 
 describe("rendered inputs and the native simulation API", () => {
+  test("two eye layouts change spacing while preserving dimensions, materials and electrical conditions", () => {
+    const models = [tight, wide].map((j) => {
+      const result = prepare(j, eyeSetup(j))
+      if (result.status !== "ready")
+        throw new Error("Eye fixture preflight failed")
+      return result.model
+    })
+    expect(models[0].setup.frequency_hz.length).toBe(41)
+    expect(models[0].setup.frequency_hz[0]).toBe(1e7)
+    expect(models[0].setup.frequency_hz.at(-1)).toBe(1e10)
+    expect(models[0].setup.save_fields_at_hz).toEqual([])
+    expect(models[0].board).toEqual(models[1].board)
+    expect(models[0].stackup).toEqual(models[1].stackup)
+    expect(models[0].reference).toEqual(models[1].reference)
+    expect(models[0].setup).toEqual(models[1].setup)
+    const dimensions = (m: (typeof models)[0]) =>
+      m.signals.map((s) => [
+        s.x_min_mm,
+        s.x_max_mm,
+        s.width_mm,
+        s.pads.map((p) => [p.width_mm, p.height_mm]),
+      ])
+    expect(dimensions(models[0])).toEqual(dimensions(models[1]))
+    expect(eyeConditions.victim_source_port).toBe(3)
+    expect(eyeConditions.aggressor_source_port).toBe(2)
+    expect(eyeConditions.victim_receiver_port).toBe(4)
+    expect(eyeConditions.source_resistance_ohms).toBe(
+      eyeConditions.load_resistance_ohms,
+    )
+    expect(
+      prepare(tight, {
+        ...eyeSetup(tight),
+        frequency_hz: Array.from({ length: 162 }, (_, i) => i + 1),
+      }).status,
+    ).toBe("unsupported")
+  })
   test("uses the actual smaller reference copper and measured gaps", () => {
     const original = JSON.stringify(tight)
     for (const [j, gap] of [

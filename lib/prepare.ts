@@ -201,9 +201,9 @@ function checkSetup(s: AnalysisSetup) {
   if (
     !Array.isArray(s.frequency_hz) ||
     !s.frequency_hz.length ||
-    s.frequency_hz.length > 8
+    s.frequency_hz.length > 161
   )
-    unsupported("Supply 1–8 explicit frequency_hz values")
+    unsupported("Supply 1–161 explicit frequency_hz values")
   s.frequency_hz.forEach((f) => positive(f, "frequency_hz"))
   if (new Set(s.frequency_hz).size !== s.frequency_hz.length)
     unsupported("Duplicate frequency samples")
