@@ -15,7 +15,7 @@ test("committed native artifacts retain exact hashes", async () => {
 })
 
 test("saved raw native complex S agrees with reported values and passive column powers", async () => {
-  for (const name of ["tight", "wide", "refined"]) {
+  for (const name of ["tight", "wide", "refined", "web-ui"]) {
     const summary = await Bun.file(join(directory, name, "summary.json")).json()
     const receipt = await Bun.file(
       join(directory, name, "native-receipt.json"),

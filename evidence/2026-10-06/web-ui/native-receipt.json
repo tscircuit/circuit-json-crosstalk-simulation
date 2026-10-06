@@ -1,0 +1,53 @@
+{
+  "native_status": "passed",
+  "solver_status": "passed",
+  "issues": [],
+  "commands": [
+    {
+      "stage": "mesh",
+      "argv": [
+        "<python-runtime>",
+        "python/mesh.py",
+        "."
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "palace",
+      "argv": [
+        "<palace-runtime>",
+        "palace.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "results",
+      "argv": [
+        "<python-runtime>",
+        "python/results.py",
+        "."
+      ],
+      "exit_code": 0
+    }
+  ],
+  "mpi_ranks": 1,
+  "threads": 1,
+  "started_at_utc": "2026-10-06T14:15:29.271403+00:00",
+  "peak_aggregate_rss_bytes": 548962304,
+  "budget": {
+    "seconds": 90,
+    "memory_bytes": 6442450944,
+    "disk_bytes": 268435456
+  },
+  "adapter_source_sha256": {
+    "run_native.py": "02a370f2eee1b85f554f9fd61a019c84f7c84f4c6b4905eb40d6ae3e9749fb0a",
+    "mesh.py": "792fb0b8d76cc92d2ea0979d2256a1116c481dbfd1eeb0f655dfad75f505b7d7",
+    "cad_identity.py": "4afbe4b0854d786e79ac42e714ab58f2323ffcc3afb132e23d410a0394ac35dd",
+    "results.py": "a665d14b82e3ceee027ede5033feff7bd882368ff21bc1ddbd5393480c932cc0"
+  },
+  "palace_binary_sha256": "6cb2750c6bebb97bc8aa24129618ef2933e81e47c424edb015abd5dd81847fff",
+  "working_disk_bytes": 32711821,
+  "elapsed_seconds": 14.16525787487626,
+  "finished_at_utc": "2026-10-06T14:15:43.436674+00:00",
+  "path_sanitization": "Runtime and workspace argv paths replaced by placeholders; statuses, source hashes, timing and measurements preserved."
+}

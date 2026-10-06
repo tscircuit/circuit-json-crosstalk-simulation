@@ -1,0 +1,109 @@
+{
+  "Problem": {
+    "Type": "Driven",
+    "Verbose": 2,
+    "Output": "postpro"
+  },
+  "Model": {
+    "Mesh": "model.msh",
+    "L0": 0.001
+  },
+  "Domains": {
+    "Materials": [
+      {
+        "Attributes": [
+          1
+        ],
+        "Permittivity": 1,
+        "Permeability": 1,
+        "LossTan": 0
+      },
+      {
+        "Attributes": [
+          2
+        ],
+        "Permittivity": 4,
+        "Permeability": 1,
+        "LossTan": 0
+      }
+    ]
+  },
+  "Boundaries": {
+    "PEC": {
+      "Attributes": [
+        11,
+        12,
+        14
+      ]
+    },
+    "Absorbing": {
+      "Attributes": [
+        13
+      ],
+      "Order": 1
+    },
+    "LumpedPort": [
+      {
+        "Index": 1,
+        "Attributes": [
+          21
+        ],
+        "R": 50,
+        "Direction": "-Z",
+        "Excitation": 1
+      },
+      {
+        "Index": 2,
+        "Attributes": [
+          22
+        ],
+        "R": 50,
+        "Direction": "-Z",
+        "Excitation": 2
+      },
+      {
+        "Index": 3,
+        "Attributes": [
+          23
+        ],
+        "R": 50,
+        "Direction": "-Z",
+        "Excitation": 3
+      },
+      {
+        "Index": 4,
+        "Attributes": [
+          24
+        ],
+        "R": 50,
+        "Direction": "-Z",
+        "Excitation": 4
+      }
+    ]
+  },
+  "Solver": {
+    "Order": 1,
+    "Device": "CPU",
+    "Driven": {
+      "Samples": [
+        {
+          "Type": "Point",
+          "Freq": [
+            1
+          ]
+        }
+      ],
+      "Save": [
+        1
+      ]
+    },
+    "Linear": {
+      "Type": "SuperLU",
+      "KSPType": "GMRES",
+      "Tol": 1e-9,
+      "MaxIts": 200,
+      "ComplexCoarseSolve": true,
+      "PCMatShifted": false
+    }
+  }
+}

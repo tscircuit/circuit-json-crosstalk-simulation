@@ -24,6 +24,10 @@ To watch an actual job, set `PALACE_BIN` and `PALACE_PYTHON` to the installed na
 
 The server binds loopback only. Requests require allowed Host/Origin values and a per-session token; launch accepts only a single allowlisted fixture name. HTTP cannot supply paths, commands, source code, material overrides or arbitrary mesh settings. One job is reserved before rendering; concurrent Run requests get 409. Cancellation signals the owned Python supervisor and waits for subprocess/lock cleanup. Only regular, owned, allowlisted artifact files are served. Each UI job is limited to 90 seconds, one rank/thread, 6 GiB aggregate RSS and 256 MiB output; a session permits 16 jobs. Existing output directories are preserved. HTTP lifecycle tests use isolated mocks and do not constitute native evidence.
 
+One actual Chrome Run click completed a native tight-fixture job on October 6. The browser observed live native logs, disabled Run while busy, and decoded both solver-derived images after completion. The native pipeline took 14.17 seconds, peaked at 548,962,304 bytes aggregate RSS and produced 32,711,821 bytes of output; all three stages exited zero. Its inputs match the recorded tight fixture, and its mesh/truncation status remains unevaluated. [Browser proof, raw S, source fingerprints and sanitized receipt](evidence/2026-10-06/web-ui) preserve that run. The proof notes the hosted process lifecycle and frontend polling delay; the screenshots are unmodified captures. Independent lightweight probes also verified real API-to-supervisor cancellation and child/owned-lock cleanup using disposable fake stages, without another native job.
+
+![Completed actual browser-triggered native job](evidence/2026-10-06/web-ui/completed.png)
+
 Only the following physical scope is supported:
 
 - One rectangular two-layer board with ordered top copper / dielectric / bottom copper.

@@ -1,0 +1,513 @@
+{
+  "passed": true,
+  "url": "http://127.0.0.1:3217",
+  "browser": "Chrome/154.0.8037.98",
+  "clicked_run_in_browser": true,
+  "inspected_existing_job": false,
+  "observed_live_native": true,
+  "job_id": "88d25b16-3ec8-4f3d-b978-bbd0a19923e8",
+  "fixture": "tight",
+  "result": {
+    "status": "native_passed",
+    "output_directory": ".",
+    "issues": [],
+    "native_status": "passed",
+    "convergence_status": "not_evaluated"
+  },
+  "convergence": {
+    "mesh": "not_evaluated",
+    "truncation": "not_evaluated"
+  },
+  "images": {
+    "status": "completed \u00b7 native_passed",
+    "images": [
+      {
+        "src": "/api/jobs/88d25b16-3ec8-4f3d-b978-bbd0a19923e8/artifacts/s-matrix.png",
+        "width": 900,
+        "height": 750
+      },
+      {
+        "src": "/api/jobs/88d25b16-3ec8-4f3d-b978-bbd0a19923e8/artifacts/electric-field.png",
+        "width": 1500,
+        "height": 750
+      }
+    ],
+    "warning": "Experimental physical model and convergenceFinite synthetic dielectric and copper geometry; explicitly selected PEC, constant Er/loss tangent, omitted soldermask and four internal 50\u03a9 taps. This job does not establish mesh or truncation convergence. The separately recorded October 6 tight refinement failed its 5% relative limit (75.19% change); truncation was not evaluated. Wider spacing reduced NEXT but slightly increased FEXT in those preliminary samples."
+  },
+  "timeline": [
+    {
+      "elapsed_ms": 55,
+      "state": "running",
+      "phase": "rendering / preparing",
+      "display": "Running \u00b7 rendering / preparing",
+      "log_chars": 0,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 308,
+      "state": "running",
+      "phase": "meshing",
+      "display": "Running \u00b7 rendering / preparing",
+      "log_chars": 105,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 561,
+      "state": "running",
+      "phase": "meshing",
+      "display": "Running \u00b7 meshing",
+      "log_chars": 3294,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 817,
+      "state": "running",
+      "phase": "meshing",
+      "display": "Running \u00b7 meshing",
+      "log_chars": 7072,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 1070,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 meshing",
+      "log_chars": 12427,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 1392,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 meshing",
+      "log_chars": 13606,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 1645,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 13606,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 1898,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 13606,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 2150,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 13606,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 2409,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 13606,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 2662,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 13606,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 2916,
+      "state": "running",
+      "phase": "native Palace solve",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 17686,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 3170,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 native Palace solve",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 3423,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 3677,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 3930,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 4184,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 4437,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 4691,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 4944,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 5197,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 5451,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 5705,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 5958,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 6212,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 6465,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 6719,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 6971,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 7225,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 7478,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 7731,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 7985,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 8238,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20828,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 8492,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 8744,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 8998,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 9251,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 9505,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 9758,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 10011,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 10265,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 10518,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 10772,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 11025,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 11278,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 11532,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 11785,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 12038,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 12292,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 12545,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 12799,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 13051,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 13305,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 13558,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 13812,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 14065,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 14321,
+      "state": "running",
+      "phase": "postprocessing native outputs",
+      "display": "Running \u00b7 postprocessing native outputs",
+      "log_chars": 20891,
+      "run_disabled": true
+    },
+    {
+      "elapsed_ms": 14576,
+      "state": "completed",
+      "phase": "completed",
+      "display": "completed \u00b7 native_passed",
+      "log_chars": 20891,
+      "run_disabled": false
+    }
+  ],
+  "adapter_revision": "2202dbb560498bce74a136896723bde4c53ad747",
+  "verification_driver_sha256": "3089565f0fff19f14a8e1552cd365cec2eb878c39e261f116b5ac045c7c08060",
+  "server_lifecycle_note": "The hosted process started before the final manager-side 90-second deadline was added; the native supervisor 90-second deadline was active for this job.",
+  "screenshot_note": "The live screenshot was captured during the native stage while the 500-ms frontend poll still displayed meshing. The subsequent timeline records the visible native Palace solve state. Screenshots are unmodified browser captures.",
+  "input_matches_recorded_tight": [
+    "circuit.json",
+    "setup.json",
+    "model.json",
+    "palace.json"
+  ]
+}

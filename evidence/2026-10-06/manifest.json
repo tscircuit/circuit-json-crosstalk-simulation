@@ -58,6 +58,19 @@
     "tight/setup.json": "a7eb4d148431a6aae6d9f1ea3a5145f6bf648455f70933c7ece52bc7a0812569",
     "tight/summary.json": "da34f2a2ba00c918f44495040de502be0cf26e7e01dd8db2e028365329eacfe8",
     "tight/terminal-map.json": "a4d792ea9ee2445aafc5d663fb426874300f1ad4b1e78ded7258a22a263102af",
+    "web-ui/browser-proof.json": "9572004517740d4d0ee90ca5874218926c96634feabc5d4c7cdd9a1d1dd402cf",
+    "web-ui/circuit.json": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+    "web-ui/completed.png": "b762b37a8d6ab115068b87c610425fe5d9fe51c5b59b3a575bbbdbef36cd7e07",
+    "web-ui/electric-field.png": "81f29304fac2aba7db05912867bebe78ecde67b9c459fa982f5701613386b69f",
+    "web-ui/live-native.png": "0fe717bb77b563bcd1dacce184935e4e98f47953380dd53cbfee86b742c178bc",
+    "web-ui/model.json": "c6c45567f90980f6a9daa303d9f4a81e735cdaa678f61fd8ab0cc21a16f0170c",
+    "web-ui/native-receipt.json": "c3ba124d41dac54f5da2384fdfa086643506663305d7274105c3ddfd6d61f9dd",
+    "web-ui/palace.json": "9f074fd4e54a155dc9f31c69c5aca8c446285526f8ca8dde5bb8598cde55eb93",
+    "web-ui/postpro/port-S.csv": "802b16eaa3d6ebbcc7d09cd1c9d28679b79df6a1ee69b3f3cd5b13c4b4a381d4",
+    "web-ui/ready.png": "222e8e2aacd04cf460651a8ec5137d814cbb3d05acae9b3c0091a1adc21e1aab",
+    "web-ui/s-matrix.png": "5328d7a8a4a9af635051a3332781eac1689f0b12431e9b20a543965fa8907a82",
+    "web-ui/setup.json": "a7eb4d148431a6aae6d9f1ea3a5145f6bf648455f70933c7ece52bc7a0812569",
+    "web-ui/summary.json": "da34f2a2ba00c918f44495040de502be0cf26e7e01dd8db2e028365329eacfe8",
     "wide/cad-identity-audit.json": "eb6b2008bad20e56721579110d1c7a8fef8d7394149f9ff0551f1b25c6c2a79f",
     "wide/cad-port-audit.json": "2a1c7bc0fa1126cf1fff507b415d96333b4e68faec800c9f745c23906ff6ee46",
     "wide/circuit.json": "736c8418f07355ff3aa2e97a60300745c245c1913e7ad92a21f6140d07e776f4",
@@ -76,5 +89,6 @@
     "wide/setup.json": "a7eb4d148431a6aae6d9f1ea3a5145f6bf648455f70933c7ece52bc7a0812569",
     "wide/summary.json": "e57c7d5b15ffdb6485a715793cdf0e6435162217b6b9ae718a2725eebe5a84b3",
     "wide/terminal-map.json": "6eb5dd6ca2add66a643457e651ee9988175ec6f93b825f91c50121acba3e2ec9"
-  }
+  },
+  "browser_native": "web-ui/browser-proof.json: exactly one actual Chrome-triggered native job passed; per-job mesh and truncation convergence remain not_evaluated"
 }
