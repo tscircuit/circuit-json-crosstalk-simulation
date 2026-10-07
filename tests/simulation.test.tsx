@@ -30,7 +30,7 @@ describe("rendered inputs and the native simulation API", () => {
     expect(models[0].setup.frequency_hz.length).toBe(41)
     expect(models[0].setup.frequency_hz[0]).toBe(1e7)
     expect(models[0].setup.frequency_hz.at(-1)).toBe(1e10)
-    expect(models[0].setup.save_fields_at_hz).toEqual([])
+    expect(models[0].setup.save_fields_at_hz).toEqual([1e9])
     expect(models[0].board).toEqual(models[1].board)
     expect(models[0].stackup).toEqual(models[1].stackup)
     expect(models[0].reference).toEqual(models[1].reference)

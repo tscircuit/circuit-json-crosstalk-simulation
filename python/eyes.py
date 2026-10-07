@@ -215,6 +215,16 @@ def process(root):
         grid_change=difference(w,waveforms(f[sparse],s[sparse],condition))
         bandwidth_change=difference(w,waveforms(f[band],s[band],condition))
         support_change=difference(w,waveforms(f,s,condition,support=6e-10))
+        domain=Path(paths['domain'])
+        fd,sd,md,pd=channel(domain)
+        base_setup=dict(model['setup']); domain_setup=dict(md['setup'])
+        base_air=base_setup.pop('air_padding_mm'); domain_air=domain_setup.pop('air_padding_mm')
+        if pd['circuit_json_sha256']!=provenance['circuit_json_sha256'] or not np.array_equal(fd,f) or base_setup!=domain_setup or domain_air<=base_air:
+            raise ValueError('Domain sensitivity requires identical physical input/setup except increased air padding')
+        wd=waveforms(fd,sd,condition)
+        domain_voltage_change=difference(w,wd)
+        domain_s_change=float(np.max(abs(sd-s)))
+        domain_coupling_change=float(np.max(abs(sd[:,3,[1,0]]-s[:,3,[1,0]])/np.maximum(abs(s[:,3,[1,0]]),1e-4)))
         checks={'loaded_waveform_mesh_change_v':mesh_change,'fixed_center_opening_mesh_change_v':opening_change,
                 'time_step_halving_change_v':sampling_change,'frequency_grid_decimation_change_v':grid_change,
                 'bandwidth_80_percent_change_v':bandwidth_change,'causal_fir_support_extension_change_v':support_change,
@@ -225,9 +235,17 @@ def process(root):
                 'voltage_tolerance_v':condition['waveform_tolerance_v'],
                 'status':'passed' if max(mesh_change,opening_change,sampling_change,grid_change,bandwidth_change,support_change)<=condition['waveform_tolerance_v'] else 'failed',
                 'scope':'Local educational loaded-voltage checks; not full complex coupling convergence, asymptotic error bound or global SI qualification',
-                'truncation_convergence':'not_evaluated'}
+                'domain_loaded_waveform_change_v':domain_voltage_change,
+                'domain_maximum_all_complex_S_change':domain_s_change,
+                'domain_maximum_selected_complex_coupling_relative_change':domain_coupling_change,
+                'air_padding_mm':[base_air,domain_air],
+                'truncation_convergence':'passed' if domain_s_change<=.01 and domain_coupling_change<=.05 and domain_voltage_change<=condition['waveform_tolerance_v'] else 'failed',
+                'frequency_status':'passed' if max(grid_change,bandwidth_change,support_change,sampling_change)<=condition['waveform_tolerance_v'] else 'failed'}
         checks['full_complex_channel_mesh_status']='passed' if checks['maximum_all_complex_S_mesh_change']<=.01 and checks['maximum_selected_complex_coupling_relative_mesh_change']<=.05 else 'failed'
         checks['full_complex_channel_mesh_criteria']={'maximum_all_S_absolute':.01,'maximum_selected_coupling_relative':.05}
+        zero=waveforms(f,s,{**condition,'driver_low_v':0,'driver_high_v':0})
+        checks['zero_drive_control_v']=float(max(np.max(abs(zero[k])) for k in ['quiet','switching','noise']))
+        checks['quiet_control']='Same native coupled channel, aggressor source held at0V; linear superposition'
         reports[name]={'gap_mm':model['gap_mm'],'metrics':m,'fit':w['fit'],'checks':checks,'provenance':provenance}
         waves[name]=w;models[name]=model
         layout(model,root/f'{name}-layout.png',name.capitalize()+' spacing')
@@ -265,18 +283,18 @@ def process(root):
     ax.set_xlim(8,24);ax.set_xlabel('Time after pattern start (UI)');ax.set_ylabel('Switching − quiet at victim P4 (mV)')
     ax.set_title('Added crosstalk noise · identical victim bits and fixed aggressor timing');ax.legend();ax.grid(alpha=.2)
     fig.savefig(root/'added-noise.png',dpi=150);plt.close(fig)
-    report={'status':'loaded_voltage_checks_passed' if all(r['checks']['status']=='passed' for r in reports.values()) else 'loaded_voltage_checks_failed',
+    report={'status':'convergence_checks_passed' if all(r['checks']['status']=='passed' and r['checks']['full_complex_channel_mesh_status']=='passed' and r['checks']['truncation_convergence']=='passed' for r in reports.values()) else 'convergence_checks_failed',
             'conditions':condition,'cases':reports,'actual_bits':{k:waves[names[0]][k].tolist() for k in ['victim_bits','aggressor_bits']},
             'limits':['Synthetic assumed PEC/lossless fixture; IC/package/PDN and random effects omitted.',
                       'Causal loaded FIR fit only qualified in solved band; out-of-band behavior and full passive macromodel not established.',
                       'Quiet is an inactive aggressor on the SAME coupled geometry, not zero physical coupling.',
                       'Finite-pattern eyes at one selected phase; no BER/compliance, optimized routing or actual DDR qualification.',
-                      'Air/domain truncation remains unevaluated; loaded local checks do not replace full S-parameter convergence.']}
+                      'Two-mesh/two-domain sensitivities do not establish an asymptotic error bound; failed gates remain explicit.']}
     report['spacing_comparison']={'measured_lower_added_noise_case':min(reports,key=lambda n:reports[n]['metrics']['switching_minus_quiet_peak_v']),
          'measured_smaller_opening_reduction_case':min(reports,key=lambda n:reports[n]['metrics']['opening_reduction_v']),
          'interpretation':'Measured outcomes for this declared testbench; no universal good/bad or routing claim. Compare switching-minus-quiet within each layout to isolate aggressor activity.'}
     save(root/'eye-summary.json',report)
-    html='<!doctype html><meta charset="utf-8"><title>Two-layout crosstalk demo</title><style>body{font:18px system-ui;max-width:1100px;margin:40px auto;color:#273744}img{width:100%}p{line-height:1.5}.warning{padding:16px;background:#fff3da}</style>'
+    html='<!doctype html><meta charset="utf-8"><title>Two-layout crosstalk demo</title><style>body{font:18px system-ui;max-width:1100px;margin:40px auto;color:#273744;background:white}img{width:100%}p{line-height:1.5}.warning{padding:16px;background:#fff3da}</style>'
     html+='<h1>Two layouts, the same victim signal</h1><p>Orange: aggressor travels right → left. Blue: victim travels left → right. Only spacing changes.</p>'
     for name in names:html+=f'<h2>{name.capitalize()} spacing</h2><img src="{name}-layout.png" alt="Actual rendered PCB geometry">'
     html+='<h2>What reaches the victim receiver?</h2><p>Each layout is tested with its aggressor quiet and switching. The axes, victim bits, loads and sampling reference are identical.</p><img src="eyes.png" alt="Actual channel-derived victim eyes"><img src="added-noise.png" alt="Switching minus quiet voltage">'
@@ -287,7 +305,7 @@ def process(root):
     html+='</table>'
     full_channel_passed=all(r['checks']['full_complex_channel_mesh_status']=='passed' for r in reports.values())
     full_channel_text='Full complex-channel mesh checks passed.' if full_channel_passed else 'Full complex-channel mesh checks failed; the eye-voltage check does not qualify the complete channel.'
-    html+=f'<p class="warning">{report["status"].replace("_"," ")}. {full_channel_text} Air/domain convergence remains unevaluated. Educational synthetic fixture; no DDR/BER or routing qualification.</p><p>{condition["bit_rate_hz"]/1e9:g} Gb/s; {condition["driver_low_v"]:g}–{condition["driver_high_v"]:g} V sources; {condition["rise_fall_s"]*1e12:g} ps ramps; 50 Ω source/load; receiver nominal high {condition["driver_high_v"]/2:g} V. Native channel plus causal loaded FIR approximation, not a Palace transient solve.</p>'
+    html+=f'<p class="warning">{report["status"].replace("_"," ")}. {full_channel_text} Domain sensitivity: '+', '.join(f'{n}: {r["checks"]["truncation_convergence"]}' for n,r in reports.items())+f'. Preliminary synthetic fixture; no DDR/BER or routing qualification.</p><p>{condition["bit_rate_hz"]/1e9:g} Gb/s; {condition["driver_low_v"]:g}–{condition["driver_high_v"]:g} V sources; {condition["rise_fall_s"]*1e12:g} ps ramps; 50 Ω source/load; receiver nominal high {condition["driver_high_v"]/2:g} V. Native channel plus causal loaded FIR approximation, not a Palace transient solve.</p>'
     (root/'index.html').write_text(html)
     print(json.dumps({'status':report['status'],'report':str(root/'index.html'),'summary':str(root/'eye-summary.json')}))
 

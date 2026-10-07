@@ -6,14 +6,15 @@
   "exports": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "serve": "bun server/index.ts",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "format:check": "biome format .",
-    "simulate": "bun run.tsx"
+    "simulate": "bun run.tsx",
+    "render": "bun render.ts"
   },
   "dependencies": {
-    "circuit-json": "https://pkg.pr.new/circuit-json@8876d64"
+    "circuit-json": "https://pkg.pr.new/circuit-json@8876d64",
+    "circuit-json-to-gmsh": "github:tscircuit/circuit-json-to-gmsh#9c7f34b7e502b8339a6659cb268b1540867a672d"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",

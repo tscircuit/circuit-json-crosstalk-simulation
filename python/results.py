@@ -124,6 +124,15 @@ def process(directory):
     ax.set_xlabel('Excited port');ax.set_ylabel('Observed port');ax.set_title(f'Native Palace S magnitude (dB), {frequency/1e9:g} GHz')
     fig.colorbar(image,ax=ax);fig.savefig(directory/'s-matrix.png',dpi=150);plt.close(fig)
     fields = [plot_field(directory,setup['save_fields_at_hz'][0])] if setup['save_fields_at_hz'] else []
+    # ParaView views of the actual extended Gmsh mesh, not a geometry drawing.
+    mesh = meshio.read(directory/'model.msh')
+    def vtk_subset(name, kind, attributes):
+        cells = np.concatenate([b.data[np.isin(mesh.cell_data['gmsh:physical'][i],attributes)] for i,b in enumerate(mesh.cells) if b.type==kind])
+        nodes = np.unique(cells)
+        remap = np.full(len(mesh.points),-1,dtype=int);remap[nodes]=np.arange(len(nodes))
+        meshio.write(directory/name,meshio.Mesh(mesh.points[nodes],[(kind,remap[cells])]))
+    vtk_subset('dielectric-mesh.vtu','tetra',[2])
+    vtk_subset('copper-surface.vtu','triangle',[11,12,14])
     summary = {'native_status':'completed','checks_status':'passed' if all(m['checks_status']=='passed' for m in matrices) else 'failed',
                'source_csv':'postpro/port-S.csv',
                'port_order':['signal_1_near','signal_1_far','signal_2_near','signal_2_far'],

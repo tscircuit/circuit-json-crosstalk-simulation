@@ -1,54 +1,45 @@
 # circuit-json-crosstalk-simulation
 
-Run two real TSX layouts through Palace, then compare the victim eyes with the aggressor quiet and switching. The close pair has a 0.1 mm edge gap; the separated pair has a 0.8 mm gap. Trace dimensions, materials, drivers, loads, bit patterns and timing are identical. Generated inputs, meshes, logs, channels and images stay in ignored `output/`.
+TSX → Circuit JSON → **circuit-json-to-gmsh** → Palace → victim eyes.
+Two comparable 4 mm routes use 0.1/0.8 mm edge gaps. Only spacing changes.
 
-Install these prerequisites first:
-
-- **Bun** (tested with 1.3.14) for the TSX renderer and TypeScript API.
-- **Python 3.11+** with the packages in `python/requirements.txt`.
-- **Palace** with a CPU/SuperLU build and its MPI runtime. See the [official installation instructions](https://github.com/awslabs/palace#Getting-started). This adapter was tested with Palace commit `0dc74cdf8c36c58b69b21c4a06e816048ec0b83f` (`v0.18.1-dirty`). Palace is installed separately; no solver binary is bundled or automatically installed.
+Install Bun, Python packages in `python/requirements.txt`, a CPU/SuperLU Palace build, and official ParaView with `pvpython`. Configure their paths, then run:
 
 ```sh
 bun install --frozen-lockfile
-python3 -m venv .venv
-.venv/bin/python -m pip install -r python/requirements.txt
-export PALACE_PYTHON="$PWD/.venv/bin/python"
-export PALACE_BIN="/absolute/path/to/installed/palace"
+export PALACE_PYTHON=/path/to/python
+export PALACE_BIN=/path/to/palace
+export PARAVIEW_PYTHON=/path/to/pvpython
 bun run simulate
 ```
 
-`bun run simulate` first saves labeled PCB layouts, then runs both broadband channels on two meshes each. Open the printed `output/.../index.html` for the layouts, same-axis quiet/switching victim eyes and switching-minus-quiet noise. Native raw CSV, exact inputs, receipts, waveforms and numerical checks remain beside the plots. Each invocation creates a fresh directory. Missing software, failed native solves and unsupported geometry fail explicitly; no cached or synthetic channel replaces a solver run. Expect several minutes on a laptop.
+Open the printed `output/.../index.html`. It saves two separate three-panel images: actual Gmsh mesh, actual ParaView 3D field snapshot, and quiet/switching victim eyes. Cameras, field colors and eye axes match. Weaker/stronger labels follow measured added noise; a closed eye is never manufactured. Generated inputs, native meshes, raw complex channels, PVD/PVTU/VTU fields, logs and waveforms remain separately in ignored `output/`. Re-render saved data without a solve:
 
-Optional settings: `--gap 0.1 --wide-gap 0.8 --mesh-near 0.04 --output output/my-run`. Output directories must not already exist. Both layouts always run; the wider gap must exceed the close gap. Runtime paths may be omitted when the correct executables are on PATH.
-
-The educational eye conditions are explicit in `examples/eye-setup.ts`: 1.6 Gb/s, 128 deterministic bits, 0–1.5 V ideal sources with 200 ps ramps, matched 50 Ω source/load resistors, and one common fixed timing reference. The victim travels P3 → P4; the aggressor travels P2 → P1, with a fixed half-UI phase. The matched receiver's nominal high is 0.75 V. Quiet holds the aggressor source at 0 V **on the same coupled channel**; it does not remove physical coupling. No IBIS, package, PDN, jitter, noise or equalization model is supplied.
-
-Palace supplies the full complex four-port channel at 10 MHz and a uniform 0.25–10 GHz grid. A near-DC native check supports the separately stated ideal-PEC static limit. `python/eyes.py` fits real causal FIR taps to the two loaded voltage transfers, with the exact matched-source factor `V_receiver = 0.5 × Σ S_receiver,source V_source`. It uses linear convolution, preserves phase and never turns a single-frequency field into an eye. This is a channel-derived transient approximation, not a Palace time-domain solve or a general circuit simulator.
-
-The report checks native matrix passivity/reciprocity, in-band loaded fit error, loaded waveform and fixed-center opening changes between meshes, time-step halving, frequency-grid decimation, 10 → 8 GHz bandwidth sensitivity and FIR support extension. The declared voltage tolerance is 5 mV. A failed loaded-voltage check stays visible and makes the CLI exit nonzero. Full complex-channel mesh criteria (0.01 absolute all-S and 5% selected coupling relative) are reported separately; they **failed** in the saved demonstration and remain visible on the page. The loaded-voltage result is not a full channel convergence proof or error bound. Air/domain convergence and a global passive/causal macromodel outside the solved band remain unevaluated. Observed finite-pattern eye openings are not BER or DDR compliance measurements. Labels describe measured spacing examples; no closed eye or uniformly better coupling is promised.
-
-```tsx
-import { simulate } from "./index"
-import { renderCoupledRoutes } from "./examples/coupled-routes"
-import { exampleSetup } from "./examples/setup"
-
-const circuitJson = await renderCoupledRoutes(0.1)
-const result = await simulate(circuitJson, {
-  setup: exampleSetup(circuitJson),
-})
-console.log(result.output_directory)
+```sh
+bun run render output/<run>
 ```
 
-Circuit JSON owns the actual copper XY geometry and board stackup in mm. The separate setup selects the reference copper, ports, excitation, frequency, mesh, boundaries and solver. The example supplies an explicitly assumed synthetic dielectric (Er 4, loss tangent 0 at 1 GHz) and finite copper thickness; it chooses PEC, constant Er/loss tangent, omitted soldermask and four internal 50-ohm port taps. Conductivity is preserved as physical data, but PEC omits ohmic loss. No material constants or full-board ground plane are inferred from a layer name. A stackup alone cannot yield meaningful SI results.
+Saved native run (984 solves; ParaView 6.2.0):
 
-Supported geometry is deliberately small: a rectangular two-layer board, two straight uniform coextensive top routes with rectangular endpoint pads, and one actual rectangular bottom copper pour. The rendered example's reference copper is 5.6 × 2.0 mm, not the full 6 × 2.4 mm board. Vias, bends, tapers, holes, slots, rounded pads, stiffeners, branches, additional copper and arbitrary multilayers are rejected. Missing thickness, Er or frequency-qualified loss data must be supplied explicitly. Fields use unit incident power normalization, not an IC voltage drive.
+![Weaker measured coupling: actual mesh, field and eye](examples/results/weaker-coupling.png)
 
-Native completion and passivity/reciprocity do **not** establish numerical SI qualification. An earlier single-frequency weak-coupling refinement failed its relative-S criterion. The eye report evaluates the declared loaded-voltage quantities separately and retains the full complex-S change. The adapter maps mm to Palace `L0 = 0.001` m and Hz to GHz, following the [official configuration schema](https://github.com/awslabs/palace/blob/0dc74cdf8c36c58b69b21c4a06e816048ec0b83f/scripts/schema/config-schema.json). Frequency-to-time reconstruction requires broadband complex data and a DC treatment; see the [scikit-rf transform guidance](https://scikit-rf.readthedocs.io/en/latest/api/generated/skrf.network.Network.impulse_response.html). This code uses its own causal loaded FIR fit, not scikit-rf.
+![Stronger measured coupling: actual mesh, field and eye](examples/results/stronger-coupling.png)
 
-For the older single-frequency field/port inspector, run `bun run serve` and open http://127.0.0.1:3217. It binds loopback, validates requests and supports cancellation. That inspector does not generate eyes; the new CLI report is the two-layout eye demo.
+| Gap | Added-noise peak | Quiet / switching opening | Complex-S mesh | Air / frequency sensitivity |
+| --- | --- | --- | --- | --- |
+| 0.1 mm | 30.1 mV | 747.9 / 714.1 mV | **Failed** | Passed / passed |
+| 0.8 mm | 3.2 mV | 747.8 / 744.8 mV | **Failed** | Passed / passed |
 
-Each native channel uses one rank/thread, a 600-second wall limit, 6 GiB aggregate RSS and 256 MiB output limit. The four channels run sequentially. An owner-token lock serializes native jobs; occupied locks are preserved. `PALACE_HEAVY_LOCK` can override the default `/tmp/dot-cloud-heavy.lock`. Ctrl-C stops the CLI through the Python supervisor; API callers can supply an `AbortSignal`.
+These provisional numbers are not qualified SI results. Coarse→fine maximum all-S changes are 0.0370/0.0391 (limit 0.01), and selected coupling changes are 95.42%/5.57% (limit 5%, denominator floor 1e-4). Loaded-voltage checks pass, but neither full channel passes mesh qualification. The command therefore exits 1 after saving the images. [Exact inputs, raw channels, source/runtime fingerprints and checks](examples/results/measurements.json) accompany the snapshot; this run uses a local Palace build with banner `v0.18.1-dirty` and an included binary fingerprint.
 
-Local checks: `bun test`, `bun run typecheck`, `bun run format:check`, and `python -m unittest discover -s python -p 'test_eyes.py'`. Tests cover rendered geometry, units, preflight, native-only API behavior, HTTP boundaries, matched voltage scaling, causal response and zero-mutual controls. They do not launch Palace.
+The actual [exporter](https://github.com/tscircuit/circuit-json-to-gmsh) is pinned to `9c7f34b7`. `parseCircuitJson`, `createGeometryModel`, `createMeshRequirements` and `exportGmsh({conformal:true})` create and validate the board. `python/adapter.py` imports that BREP and maps its native mesh/manifest/report ownership by bounds and volume. It adds only a padded air box and four lumped apertures, then remeshes the extended domain conformally. It checks preserved material volume, shared interfaces, exterior absorbing faces, port area and literal contact nodes. The exporter's board validation mesh uses the configured far-size target; the EM remesh uses the near/far/transition settings. No custom PCB geometry generator replaces the package.
 
-MIT adapter code. Geometry/contact and field-reader methods were adapted from `tscircuit/simulate-return-current` under the same license. Palace is a separate Apache-2.0 runtime. Experimental renderer/schema dependencies are pinned in `bun.lock`; no schema or analyzer changes are included.
+Circuit JSON owns the actual copper and explicit stackup in mm. `simulate(circuitJson,{setup,output_directory})` supplies ports, mesh, boundaries and solver separately. Snake_case physical fields map explicitly to the exporter's fabrication stack; zero loss is supplied, avoiding its default. Missing Er/loss/thickness fails. The analysis explicitly selects constant Er and loss tangent over the solved band. The fixture is **assumed synthetic Er=4, zero loss at 1 GHz, finite copper thickness with explicit PEC**, omitted mask and nonmagnetic materials. Conductivity is retained but PEC omits ohmic loss. This is neither manufacturer material data nor an arbitrary-board exporter. The adapter currently requires two straight top routes with covered rectangular endpoint pads and one actual rectangular bottom reference pour; unsupported physical geometry fails.
+
+Palace uses `L0=1e-3` for mm and GHz frequencies. Ports are 50 Ω internal taps at X=±1.6 mm; the outer copper stubs remain open. Four independent excitations cover 10 MHz plus 0.25–10 GHz; selected 1 GHz fields are saved for ParaView. Field normalization is unit incident power. The eye uses complex broadband data, matched 50 Ω source/load dividers, 0–1.5 V ideal 200 ps ramps and deterministic 1.6 Gb/s bits. Quiet holds the aggressor at 0 V on the same coupled channel. A real causal loaded FIR preserves phase; it is not an IC/IBIS model or a Palace transient solve.
+
+Six native cases run sequentially: coarse/fine meshes and a larger air box per layout. Raw passivity/reciprocity, full complex-S mesh/domain changes, loaded voltage changes, frequency-grid/bandwidth/time-step/FIR-support sensitivities and zero-drive controls stay explicit. Failed convergence remains visible and gives a nonzero CLI status **after artifacts are saved**. Passing local sensitivities is not an error bound, BER, DDR compliance or routing qualification. IC/package/PDN, jitter and noise are absent. Current source/runtime compatibility and measured outcomes are recorded with the saved run.
+
+One MPI rank/thread, 600 s/6 GiB/256 MiB per native case; owner-token `/tmp/dot-cloud-heavy.lock` serializes shared compute and preserves other owners. Native cancellation reaches the supervisor and its children. ParaView rendering is separately bounded. No automatic runtime installation, cached channel fallback or GitHub CI is included.
+
+Checks: `bun test`, `bun run typecheck`, `bun run format:check`, and `python -m unittest discover -s python -p 'test_eyes.py'`. MIT code; the real geometry dependency is MIT. Palace and ParaView are separate external runtimes.

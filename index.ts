@@ -20,6 +20,7 @@ export function simulate(
     mode: "native",
     signal: options.signal,
     runtime: {
+      bun: process.execPath,
       python: process.env.PALACE_PYTHON ?? Bun.which("python3") ?? "",
       palace: process.env.PALACE_BIN ?? Bun.which("palace") ?? "",
       seconds: 600,

@@ -1,0 +1,472 @@
+{
+  "status": "convergence_checks_failed",
+  "cli_exit_code": 1,
+  "conditions": {
+    "bit_rate_hz": 1600000000,
+    "driver_low_v": 0,
+    "driver_high_v": 1.5,
+    "rise_fall_s": 2e-10,
+    "source_resistance_ohms": 50,
+    "load_resistance_ohms": 50,
+    "victim_source_port": 3,
+    "aggressor_source_port": 2,
+    "victim_receiver_port": 4,
+    "aggressor_phase_ui": 0.5,
+    "quiet_aggressor_voltage_v": 0,
+    "bits": 128,
+    "victim_seed": 871,
+    "aggressor_seed": 40,
+    "discard_bits": 8,
+    "end_margin_bits": 4,
+    "fixed_eye_delay_s": 2.5e-11,
+    "threshold_v": 0.375,
+    "time_step_s": 2.5e-12,
+    "waveform_tolerance_v": 0.005,
+    "eye_opening_tolerance_v": 0.005,
+    "driver_model": "Ideal linear ramp voltage source with series resistance",
+    "receiver_model": "Matched resistor to ideal GND; no receiver capacitance or clamps",
+    "omitted": "IBIS, package, PDN, jitter, noise, equalization and DDR compliance"
+  },
+  "cases": {
+    "close": {
+      "gap_mm": 0.10000000000000003,
+      "metrics": {
+        "quiet": {
+          "maximum_low_at_fixed_center_v": 0.0010336427097502427,
+          "minimum_high_at_fixed_center_v": 0.74896635729025,
+          "observed_center_opening_v": 0.7479327145804997
+        },
+        "switching": {
+          "maximum_low_at_fixed_center_v": 0.017942276311246185,
+          "minimum_high_at_fixed_center_v": 0.7320577236887544,
+          "observed_center_opening_v": 0.7141154473775082
+        },
+        "switching_minus_quiet_peak_v": 0.030060282876934397,
+        "opening_reduction_v": 0.0338172672029915,
+        "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+      },
+      "checks": {
+        "loaded_waveform_mesh_change_v": 0.002173489698587428,
+        "fixed_center_opening_mesh_change_v": 0.00169205179307097,
+        "time_step_halving_change_v": 0.00032182204364938904,
+        "frequency_grid_decimation_change_v": 0.00015326637183077363,
+        "bandwidth_80_percent_change_v": 0.002499841956595303,
+        "causal_fir_support_extension_change_v": 0.0008305020317249667,
+        "maximum_all_complex_S_mesh_change": 0.03698286857880662,
+        "maximum_selected_complex_coupling_relative_mesh_change": 0.9541754807116806,
+        "relative_coupling_denominator_floor": 0.0001,
+        "mesh_field_tetrahedra": [
+          19923,
+          29924
+        ],
+        "voltage_tolerance_v": 0.005,
+        "status": "passed",
+        "scope": "Local educational loaded-voltage checks; not full complex coupling convergence, asymptotic error bound or global SI qualification",
+        "domain_loaded_waveform_change_v": 0.0002701538311895568,
+        "domain_maximum_all_complex_S_change": 0.0033452363998727887,
+        "domain_maximum_selected_complex_coupling_relative_change": 0.049526023065209084,
+        "air_padding_mm": [
+          1,
+          1.5
+        ],
+        "truncation_convergence": "passed",
+        "frequency_status": "passed",
+        "full_complex_channel_mesh_status": "failed",
+        "full_complex_channel_mesh_criteria": {
+          "maximum_all_S_absolute": 0.01,
+          "maximum_selected_coupling_relative": 0.05
+        },
+        "zero_drive_control_v": 0.0,
+        "quiet_control": "Same native coupled channel, aggressor source held at0V; linear superposition"
+      },
+      "fit": {
+        "method": "Real nonnegative-lag regularized FIR; exact static DC; no proportional/unstable poles",
+        "time_step_s": 2.5e-12,
+        "support_s": 4e-10,
+        "regularization": 0.001,
+        "maximum_native_loaded_complex_fit_error": 0.0001836853003298212,
+        "maximum_dense_in_band_loaded_row_norm": 0.500003239858596,
+        "passivity_scope": "Raw full native matrices checked; only loaded two-input row checked between samples. FIR outside solved band is not qualified.",
+        "causality_scope": "FIR is causal by construction; fit residual checks consistency with sampled channel, not an independent global causality proof.",
+        "pre_input_voltage_residual_v": 4.736951571734001e-16
+      }
+    },
+    "separated": {
+      "gap_mm": 0.8,
+      "metrics": {
+        "quiet": {
+          "maximum_low_at_fixed_center_v": 0.0010919904612610983,
+          "minimum_high_at_fixed_center_v": 0.7489080095387398,
+          "observed_center_opening_v": 0.7478160190774787
+        },
+        "switching": {
+          "maximum_low_at_fixed_center_v": 0.002622913951793374,
+          "minimum_high_at_fixed_center_v": 0.7473770860482073,
+          "observed_center_opening_v": 0.7447541720964139
+        },
+        "switching_minus_quiet_peak_v": 0.0032225537236440665,
+        "opening_reduction_v": 0.0030618469810648197,
+        "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+      },
+      "checks": {
+        "loaded_waveform_mesh_change_v": 0.0019097988866730309,
+        "fixed_center_opening_mesh_change_v": 0.00018146175881139648,
+        "time_step_halving_change_v": 0.0002580552747052378,
+        "frequency_grid_decimation_change_v": 0.00013585377660950502,
+        "bandwidth_80_percent_change_v": 0.002442109442982087,
+        "causal_fir_support_extension_change_v": 0.0008268200227389277,
+        "maximum_all_complex_S_mesh_change": 0.03914802135426984,
+        "maximum_selected_complex_coupling_relative_mesh_change": 0.05566265514856387,
+        "relative_coupling_denominator_floor": 0.0001,
+        "mesh_field_tetrahedra": [
+          20602,
+          30243
+        ],
+        "voltage_tolerance_v": 0.005,
+        "status": "passed",
+        "scope": "Local educational loaded-voltage checks; not full complex coupling convergence, asymptotic error bound or global SI qualification",
+        "domain_loaded_waveform_change_v": 0.00011026935636102651,
+        "domain_maximum_all_complex_S_change": 0.006010662076306901,
+        "domain_maximum_selected_complex_coupling_relative_change": 0.020430354548719398,
+        "air_padding_mm": [
+          1,
+          1.5
+        ],
+        "truncation_convergence": "passed",
+        "frequency_status": "passed",
+        "full_complex_channel_mesh_status": "failed",
+        "full_complex_channel_mesh_criteria": {
+          "maximum_all_S_absolute": 0.01,
+          "maximum_selected_coupling_relative": 0.05
+        },
+        "zero_drive_control_v": 0.0,
+        "quiet_control": "Same native coupled channel, aggressor source held at0V; linear superposition"
+      },
+      "fit": {
+        "method": "Real nonnegative-lag regularized FIR; exact static DC; no proportional/unstable poles",
+        "time_step_s": 2.5e-12,
+        "support_s": 4e-10,
+        "regularization": 0.001,
+        "maximum_native_loaded_complex_fit_error": 0.00018946178579275674,
+        "maximum_dense_in_band_loaded_row_norm": 0.5000000000000004,
+        "passivity_scope": "Raw full native matrices checked; only loaded two-input row checked between samples. FIR outside solved band is not qualified.",
+        "causality_scope": "FIR is causal by construction; fit residual checks consistency with sampled channel, not an independent global causality proof.",
+        "pre_input_voltage_residual_v": 4.736951571734001e-16
+      }
+    }
+  },
+  "native_runs": {
+    "close/coarse": {
+      "voltage_reconstructed_S_max_error": 2.4133417454652885e-13,
+      "summary_max_error": 0.0,
+      "sigma_max": 1.0000006971003519,
+      "reciprocity": 9.829127257734123e-07,
+      "frequency_count": 41,
+      "converged_excitations": 164,
+      "field_tetrahedra": 19923,
+      "minimum_sicn": 0.21805681708979904,
+      "source_hashes": "passed",
+      "native_seconds": 101.94529716693796,
+      "peak_rss_bytes": 910852096,
+      "port_contact_audit": "passed",
+      "complete_exporter_validation": "passed",
+      "circuit_json_sha256": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+      "raw_S_csv_sha256": "cb660ca9a99784c70f5612ba70217c121593c0f7ece8571456ba695ebfc10fe8",
+      "stages_all_exit_zero": true,
+      "started_at_utc": "2026-10-07T09:54:05.952414+00:00",
+      "finished_at_utc": "2026-10-07T09:55:47.897827+00:00",
+      "raw_S_csv": "raw/close-coarse-S.csv",
+      "setup": "inputs/close-coarse.setup.json",
+      "circuit_json": "inputs/close.circuit.json",
+      "native_field_sha256": {
+        "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu": "17352241f330c991db5e9a318eabd64dfa2cb439937bb85f2d4bd2ae66843452",
+        "postpro/paraview/driven/excitation_2/Cycle000001/proc000000.vtu": "3afe450c48bc463d5407358ff995c8e4c339fbcaad72333bf4de4f52b1750bad",
+        "postpro/paraview/driven/excitation_3/Cycle000001/proc000000.vtu": "104c918a959dcbe23fbe2ac1ae9061ee4f98917e98b22ca3af51d675d3a28667",
+        "postpro/paraview/driven/excitation_4/Cycle000001/proc000000.vtu": "e76a884b7272cb2decd836ea208897d1504800090e84adbc4913a20ab38dc2d9",
+        "postpro/paraview/driven/excitation_4/Cycle000002/proc000000.vtu": "8efc56b9a8bd5210a01a48558b2940df6a40b8b58ac087027bdad21ad0aed9f2",
+        "postpro/paraview/driven_boundary/excitation_1/Cycle000001/proc000000.vtu": "dc2ee7e98c7430cf6b45cd203eb43f5469d6f305a561e10f0d599225ff353eae",
+        "postpro/paraview/driven_boundary/excitation_2/Cycle000001/proc000000.vtu": "f3b804abc5aeccd14cab69c211d9f4f8e78f1a6a81b9528032e8984e4c70b0cd",
+        "postpro/paraview/driven_boundary/excitation_3/Cycle000001/proc000000.vtu": "a6291e28228275a8c0ffa547b77ef63bd3da614f6fb9dfe5d97af88ddffd2ac7",
+        "postpro/paraview/driven_boundary/excitation_4/Cycle000001/proc000000.vtu": "f6a15379cbceb0fb3354c3875d38e4ee025a6c142b1e5cb0ef9571ff58838057"
+      }
+    },
+    "close/channel": {
+      "voltage_reconstructed_S_max_error": 1.9948648760217244e-13,
+      "summary_max_error": 0.0,
+      "sigma_max": 1.000000000312784,
+      "reciprocity": 2.7435442890124656e-09,
+      "frequency_count": 41,
+      "converged_excitations": 164,
+      "field_tetrahedra": 29924,
+      "minimum_sicn": 0.24719792972175703,
+      "source_hashes": "passed",
+      "native_seconds": 159.39695387496613,
+      "peak_rss_bytes": 1225900032,
+      "port_contact_audit": "passed",
+      "complete_exporter_validation": "passed",
+      "circuit_json_sha256": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+      "raw_S_csv_sha256": "5a9d49bf25d3914e4ab9a5652b11017543272268c648f949b0c0ec85ab45dccc",
+      "stages_all_exit_zero": true,
+      "started_at_utc": "2026-10-07T09:55:47.948586+00:00",
+      "finished_at_utc": "2026-10-07T09:58:27.345673+00:00",
+      "raw_S_csv": "raw/close-channel-S.csv",
+      "setup": "inputs/close-channel.setup.json",
+      "circuit_json": "inputs/close.circuit.json",
+      "native_field_sha256": {
+        "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu": "8fa7eee7cc9cd3ea0ae27ee6e50a9d2f9a51ace0498c89adc595cafd7e182849",
+        "postpro/paraview/driven/excitation_2/Cycle000001/proc000000.vtu": "588565d2689e7129a8df34d16b2addb700b0d2890455e103d0bb78f67a554a02",
+        "postpro/paraview/driven/excitation_3/Cycle000001/proc000000.vtu": "23d74a7f878639af2c7a6fa181bf81a3ab20fb7836765ad5509095ea0a200e72",
+        "postpro/paraview/driven/excitation_4/Cycle000001/proc000000.vtu": "3d127259ff2d98294a4d572a4fd701cfdd750d0fcdf3d83e9cb57032acbbfc18",
+        "postpro/paraview/driven/excitation_4/Cycle000002/proc000000.vtu": "ff3b39ec6cccaf00f895879b146336ef13a813a12b48e07f5b467184a7b1e61a",
+        "postpro/paraview/driven_boundary/excitation_1/Cycle000001/proc000000.vtu": "b7c7f1259aedaf36a395fe60e4cb16bb8b76b34ac6afa83fb1af709b134a33cc",
+        "postpro/paraview/driven_boundary/excitation_2/Cycle000001/proc000000.vtu": "aad1365243b1f8f0f90d33c97f62e561db2e77b4a094fe862e41f37332eb0a85",
+        "postpro/paraview/driven_boundary/excitation_3/Cycle000001/proc000000.vtu": "784fafd6f7c15a4cc5fcc3d82b8875eb42f090cdae25d1034b0c09294330ed41",
+        "postpro/paraview/driven_boundary/excitation_4/Cycle000001/proc000000.vtu": "950187cd49de2caffa65c660a97e6d6540ea3eebab17ed1a0f33efbefd06f3c7"
+      }
+    },
+    "close/domain": {
+      "voltage_reconstructed_S_max_error": 2.0755744898111434e-13,
+      "summary_max_error": 0.0,
+      "sigma_max": 1.0000000007173029,
+      "reciprocity": 1.5057623995548796e-09,
+      "frequency_count": 41,
+      "converged_excitations": 164,
+      "field_tetrahedra": 33604,
+      "minimum_sicn": 0.25380436883998064,
+      "source_hashes": "passed",
+      "native_seconds": 194.5387524999678,
+      "peak_rss_bytes": 1387642880,
+      "port_contact_audit": "passed",
+      "complete_exporter_validation": "passed",
+      "circuit_json_sha256": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+      "raw_S_csv_sha256": "e6a40ffeddc40e65d531d5e90b2235191f188bc2c2528d18e649eba962ce12cb",
+      "stages_all_exit_zero": true,
+      "started_at_utc": "2026-10-07T09:58:27.390894+00:00",
+      "finished_at_utc": "2026-10-07T10:01:41.929817+00:00",
+      "raw_S_csv": "raw/close-domain-S.csv",
+      "setup": "inputs/close-domain.setup.json",
+      "circuit_json": "inputs/close.circuit.json",
+      "native_field_sha256": {
+        "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu": "f202d4f81f984a2b3809bdd62f08b51145a1120d40491fe028e701c95e8331d8",
+        "postpro/paraview/driven/excitation_2/Cycle000001/proc000000.vtu": "249b0eb61a0c16f893e8b201ff851827756c88a116c8a13734582f912149a40d",
+        "postpro/paraview/driven/excitation_3/Cycle000001/proc000000.vtu": "93e23b81e080d625e10a4c68d13fcd129cfdad5b7bac8171f6dfb287ed7511f4",
+        "postpro/paraview/driven/excitation_4/Cycle000001/proc000000.vtu": "e26002801cda0b4c4ec07d7fb5016c034f3a8b22ec8f3ad51dddcea08f05d11a",
+        "postpro/paraview/driven/excitation_4/Cycle000002/proc000000.vtu": "7e408b7311f99d104e88e78d3b2312c7330245ab14358930f3625b753c53ed0d",
+        "postpro/paraview/driven_boundary/excitation_1/Cycle000001/proc000000.vtu": "6c7ea60242e7fd1e77cf86a084846aeffbbfce73e172e8362bab9b3011e5708c",
+        "postpro/paraview/driven_boundary/excitation_2/Cycle000001/proc000000.vtu": "bb2a0c0c5e81d45f819761463907db3dbbe1cf0449e9a18fb48b51b5afe27158",
+        "postpro/paraview/driven_boundary/excitation_3/Cycle000001/proc000000.vtu": "8a74e0ec231bbf55981fc24fe103d19699a3a8a7be6f2c666c0d12026104c38b",
+        "postpro/paraview/driven_boundary/excitation_4/Cycle000001/proc000000.vtu": "41eb1ca71bc52ef69f6a39b2e43d7eae02db76bd88a9fbaab3709a52c01bfe9b"
+      }
+    },
+    "separated/coarse": {
+      "voltage_reconstructed_S_max_error": 1.6672138691567055e-13,
+      "summary_max_error": 0.0,
+      "sigma_max": 0.9999999966085046,
+      "reciprocity": 1.1688795463807658e-09,
+      "frequency_count": 41,
+      "converged_excitations": 164,
+      "field_tetrahedra": 20602,
+      "minimum_sicn": 0.15078390175100412,
+      "source_hashes": "passed",
+      "native_seconds": 112.67459566704929,
+      "peak_rss_bytes": 942866432,
+      "port_contact_audit": "passed",
+      "complete_exporter_validation": "passed",
+      "circuit_json_sha256": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+      "raw_S_csv_sha256": "6d01c4999f468b3b54b225f141de36f5190e4971e217766d53b85e7d3a4ee4b9",
+      "stages_all_exit_zero": true,
+      "started_at_utc": "2026-10-07T10:01:41.990376+00:00",
+      "finished_at_utc": "2026-10-07T10:03:34.665070+00:00",
+      "raw_S_csv": "raw/separated-coarse-S.csv",
+      "setup": "inputs/separated-coarse.setup.json",
+      "circuit_json": "inputs/separated.circuit.json",
+      "native_field_sha256": {
+        "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu": "228d45fdef2a3236f273932d0f2736330efc5c1ef2711458bf47b4dd198b5032",
+        "postpro/paraview/driven/excitation_2/Cycle000001/proc000000.vtu": "1f9a57e3a97a236b527fe3d4fa6968ad1ff11bb7b4b2a74d8c435aef8415e871",
+        "postpro/paraview/driven/excitation_3/Cycle000001/proc000000.vtu": "52dd8076c00be004a4642faa7e707205c58b33ab1b16c889c0bf87155724bdf5",
+        "postpro/paraview/driven/excitation_4/Cycle000001/proc000000.vtu": "b1c478ff87535c1be6b9aa2495411adae069b977557a32f46633796b224814e9",
+        "postpro/paraview/driven/excitation_4/Cycle000002/proc000000.vtu": "ab535465abedc023a4e7cba174e50f966b6acb8137884414eea93c2a83e76574",
+        "postpro/paraview/driven_boundary/excitation_1/Cycle000001/proc000000.vtu": "47c38ce3af42c44735924804beb4ed3afdeeca30686339640cbbbb21e2cd5471",
+        "postpro/paraview/driven_boundary/excitation_2/Cycle000001/proc000000.vtu": "3aafa665e3202b6c1e0c755fc02fbb10371c475ecbed60a766d4034df7f2ab1f",
+        "postpro/paraview/driven_boundary/excitation_3/Cycle000001/proc000000.vtu": "04521d95f7452c7e778dfffa12530ef65bfa1ab3a24f06c92ed8897a76656317",
+        "postpro/paraview/driven_boundary/excitation_4/Cycle000001/proc000000.vtu": "0cc4ec0a8ca29031a6dc905b5f840c8376d9107cfb494e4a5c4c89b6bc9d52f7"
+      }
+    },
+    "separated/channel": {
+      "voltage_reconstructed_S_max_error": 1.7963624895103334e-13,
+      "summary_max_error": 0.0,
+      "sigma_max": 1.0000000408745653,
+      "reciprocity": 9.095581628890238e-08,
+      "frequency_count": 41,
+      "converged_excitations": 164,
+      "field_tetrahedra": 30243,
+      "minimum_sicn": 0.158922966401527,
+      "source_hashes": "passed",
+      "native_seconds": 159.72587091708556,
+      "peak_rss_bytes": 1345011712,
+      "port_contact_audit": "passed",
+      "complete_exporter_validation": "passed",
+      "circuit_json_sha256": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+      "raw_S_csv_sha256": "5d6bb094bc938d22de1466ebcc32b19e1072ec87f0d743d9b45a90ed200c28ab",
+      "stages_all_exit_zero": true,
+      "started_at_utc": "2026-10-07T10:03:34.718840+00:00",
+      "finished_at_utc": "2026-10-07T10:06:14.445692+00:00",
+      "raw_S_csv": "raw/separated-channel-S.csv",
+      "setup": "inputs/separated-channel.setup.json",
+      "circuit_json": "inputs/separated.circuit.json",
+      "native_field_sha256": {
+        "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu": "12329411d45f9e6e0f7270ae4eddd84f91d90ff83382d219c800452a0e6bb661",
+        "postpro/paraview/driven/excitation_2/Cycle000001/proc000000.vtu": "37f764272adcbe7b4672eca0aa9a63e45ebb6fd21f2a2aa101d370b7b302f3d9",
+        "postpro/paraview/driven/excitation_3/Cycle000001/proc000000.vtu": "3a498e30ac7d4e4d9bd6111343aed7cdafeb8e07d46fca6421b96071b99fb88e",
+        "postpro/paraview/driven/excitation_4/Cycle000001/proc000000.vtu": "24c185f79cd0ca5fd1f7de78f95df4a7384debccbbdd8c59c88655425fa5e6aa",
+        "postpro/paraview/driven/excitation_4/Cycle000002/proc000000.vtu": "3a165229479648622fdf3b7148662211aa9b0551eae440ae63a464968d567909",
+        "postpro/paraview/driven_boundary/excitation_1/Cycle000001/proc000000.vtu": "9f1869b63f688af241c73ae327f818a81c3af1b6dd2ab44ee8c78e75b790c387",
+        "postpro/paraview/driven_boundary/excitation_2/Cycle000001/proc000000.vtu": "c6b7b1e8fb865480be63d2f4af8df6f4a58cd680a0af158686316fed353d3166",
+        "postpro/paraview/driven_boundary/excitation_3/Cycle000001/proc000000.vtu": "9477ff3fff9eae1e52e294d3f3c0d9f392399b34dba9c41be80b16beba5657c6",
+        "postpro/paraview/driven_boundary/excitation_4/Cycle000001/proc000000.vtu": "c9dbf5329888630cb7915b0624ae55306d28b3d87f37f3a8539272e84ad88019"
+      }
+    },
+    "separated/domain": {
+      "voltage_reconstructed_S_max_error": 2.0085172592437682e-13,
+      "summary_max_error": 0.0,
+      "sigma_max": 0.99999999857956,
+      "reciprocity": 2.059962689010268e-09,
+      "frequency_count": 41,
+      "converged_excitations": 164,
+      "field_tetrahedra": 34132,
+      "minimum_sicn": 0.24196232632877723,
+      "source_hashes": "passed",
+      "native_seconds": 181.74236775003374,
+      "peak_rss_bytes": 1397555200,
+      "port_contact_audit": "passed",
+      "complete_exporter_validation": "passed",
+      "circuit_json_sha256": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+      "raw_S_csv_sha256": "442794861a941754a3f37af5df6fbcb03c0d4ca337877a9606a2babd3433ee50",
+      "stages_all_exit_zero": true,
+      "started_at_utc": "2026-10-07T10:06:14.488751+00:00",
+      "finished_at_utc": "2026-10-07T10:09:16.231350+00:00",
+      "raw_S_csv": "raw/separated-domain-S.csv",
+      "setup": "inputs/separated-domain.setup.json",
+      "circuit_json": "inputs/separated.circuit.json",
+      "native_field_sha256": {
+        "postpro/paraview/driven/excitation_1/Cycle000001/proc000000.vtu": "1ac242125386bf7cf9ec705d0f870b5e66cf8e234fbed8bfb8665b3326f4c136",
+        "postpro/paraview/driven/excitation_2/Cycle000001/proc000000.vtu": "59fe62dfe1c38bb782babbdc81a5e9cfb818aaa9c3bc067584db91f8597942e1",
+        "postpro/paraview/driven/excitation_3/Cycle000001/proc000000.vtu": "1b9b4473acb7dfbe314c7a3025abb49e847f4d3041f41a9f4415558b20e8035d",
+        "postpro/paraview/driven/excitation_4/Cycle000001/proc000000.vtu": "26c273e1553c6e8af853918e7e1ee03fcddaf1b4bac39fe2a5cf1472646c8cd5",
+        "postpro/paraview/driven/excitation_4/Cycle000002/proc000000.vtu": "b9f4576be761f0d9e1853b2d9baa3a5b12ed1d128f96760eb76c7f2ccf3c6dd0",
+        "postpro/paraview/driven_boundary/excitation_1/Cycle000001/proc000000.vtu": "7b32d91242a50a64439b1f5310e8e5b963bb7d15cba0164860cdb384cf6528aa",
+        "postpro/paraview/driven_boundary/excitation_2/Cycle000001/proc000000.vtu": "820b833fe079feab8b11eb146680b8c54035cc8d5c946fd9c7660a60d3c2b5f9",
+        "postpro/paraview/driven_boundary/excitation_3/Cycle000001/proc000000.vtu": "29386f05785463629a980bb1059400dac0cc354ea73b9f47010e225d74b31881",
+        "postpro/paraview/driven_boundary/excitation_4/Cycle000001/proc000000.vtu": "3680079925c7e19250c4ed28e69ed974ef8c9259022f842600f071332a4b920f"
+      }
+    }
+  },
+  "native_solves": 984,
+  "render": {
+    "paraview_version": "6.2.0",
+    "vtk_smp_threads": 1,
+    "outputs": [
+      {
+        "case": "close",
+        "field": "close/channel/postpro/paraview/driven/excitation_2/excitation_2.pvd",
+        "frequency_hz": 1000000000.0,
+        "excitation": 2,
+        "normalization": "unit incident power",
+        "quantity": "norm(E_real+iE_imag)",
+        "color_limits_v_per_m": [
+          100.0,
+          100000.0
+        ],
+        "scale": "logarithmic; clipped to shared limits",
+        "camera": {
+          "CameraPosition": [
+            9,
+            -11,
+            8
+          ],
+          "CameraFocalPoint": [
+            0,
+            0,
+            0.1
+          ],
+          "CameraViewUp": [
+            0,
+            0,
+            1
+          ],
+          "CameraParallelProjection": 1,
+          "CameraParallelScale": 2.7
+        },
+        "slice_plane": "X=0mm displayed within true3D copper geometry; no z exaggeration"
+      },
+      {
+        "case": "separated",
+        "field": "separated/channel/postpro/paraview/driven/excitation_2/excitation_2.pvd",
+        "frequency_hz": 1000000000.0,
+        "excitation": 2,
+        "normalization": "unit incident power",
+        "quantity": "norm(E_real+iE_imag)",
+        "color_limits_v_per_m": [
+          100.0,
+          100000.0
+        ],
+        "scale": "logarithmic; clipped to shared limits",
+        "camera": {
+          "CameraPosition": [
+            9,
+            -11,
+            8
+          ],
+          "CameraFocalPoint": [
+            0,
+            0,
+            0.1
+          ],
+          "CameraViewUp": [
+            0,
+            0,
+            1
+          ],
+          "CameraParallelProjection": 1,
+          "CameraParallelScale": 2.7
+        },
+        "slice_plane": "X=0mm displayed within true3D copper geometry; no z exaggeration"
+      }
+    ]
+  },
+  "source_sha256": {
+    "lib/export.ts": "1760a4498dfb9c3a9e011054f9f4906ac9a50523da957ed42f3f98321b0649bc",
+    "lib/prepare.ts": "84a0018f5a7bd3177c385298476adca807691b7bbe98bd4957860509c5130bc6",
+    "lib/config.ts": "f72bc940c310c521109c3219cf2fc51340f31ca86697c4e061d8db67a1fe6aba",
+    "python/adapter.py": "53b02f8dfe7d4384aabe4ff686bfe6350938a198cd816a64271533f2c5477e09",
+    "python/results.py": "3f3847cec962a6d63f6123be7ad6848089692a369c9b6f4bc58864fad243aa87",
+    "python/run_native.py": "23576dcd2d88b62838b794e37040fe6d251e53c6b7d6ee09e39fcc6c0570cc7d",
+    "python/render.py": "9b1d679da07a093a24d72a0028cd885f89ab8c8811c2bb059f85477d7bd43acb",
+    "python/compose.py": "de3c7988c2022ec97852f62a6c802e435041295450d099711917cd8b79118f1d",
+    "python/eyes.py": "5e8755b848ad7390150ffbfbe6408626447113bcf6654781e9424dfc6d47b33b"
+  },
+  "runtime": {
+    "exporter_commit": "9c7f34b7e502b8339a6659cb268b1540867a672d",
+    "palace_banner": "v0.18.1-dirty",
+    "palace_binary_sha256": "6cb2750c6bebb97bc8aa24129618ef2933e81e47c424edb015abd5dd81847fff",
+    "bun": "1.3.14",
+    "gmsh": "4.13.1",
+    "shapely": "2.1.2",
+    "numpy": "2.4.2",
+    "meshio": "5.3.5",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.8",
+    "paraview": "6.2.0",
+    "python": "3.11.16",
+    "architecture": "arm64",
+    "macos": "27.0"
+  },
+  "limits": [
+    "Synthetic assumed PEC/lossless fixture; IC/package/PDN and random effects omitted.",
+    "Causal loaded FIR fit only qualified in solved band; out-of-band behavior and full passive macromodel not established.",
+    "Quiet is an inactive aggressor on the SAME coupled geometry, not zero physical coupling.",
+    "Finite-pattern eyes at one selected phase; no BER/compliance, optimized routing or actual DDR qualification.",
+    "Two-mesh/two-domain sensitivities do not establish an asymptotic error bound; failed gates remain explicit."
+  ],
+  "raw_artifact_policy": "Exact CJ/setup and raw S CSV are included here. Native meshes, original PVD/PVTU/VTU, all logs, receipts and full waveforms stay in the separately saved run output. No DDR board data is included."
+}
