@@ -1,0 +1,39 @@
+{
+  "clock_model": "Ideal reference DQS; both edges sample once per data UI. No clock/DQS channel was simulated.",
+  "clock_alignment": "Same fixed 25 ps receiver alignment already used by saved eyes; no per-layout or waveform optimization.",
+  "ui_s": 6.25e-10,
+  "reference_delay_s": 2.5e-11,
+  "illustrative_valid_voltage_criterion": {
+    "maximum_low_v": 0.15000000000000002,
+    "minimum_high_v": 0.6000000000000001,
+    "definition": "Expected finite-pattern bit must meet these explanatory voltage limits. These are not device input thresholds."
+  },
+  "interpretation": "Qualitative bus-timing illustration, not measured setup/hold, jitter, DDR timing, eye-mask or compliance margin.",
+  "mesh_status": "FAILED",
+  "new_native_solves": 0,
+  "source_sha256": {
+    "eye-input.json": "52d4253c0c68f547fcd9001516e8752cd39bd5bc24e50c88d3e622b4895a2f1a",
+    "eye-summary.json": "26aad436045a100a9daf92dfefd9c7421bfc90c6bfd110e1246840221b6825a7",
+    "close/channel/model.json": "2e64dbe487c64f0df85966c746d87c8c9fb22a686577a010066b92d2491025c7",
+    "close-waveforms.csv": "cb13340f9799d83f70b028c8c0bb6b6611d7df86cfde94592d459fe1002355b3",
+    "separated/channel/model.json": "8868e515ec5860e0a9bd39d922f5da0f111fc0859286cef92ca760c16771f88d",
+    "separated-waveforms.csv": "6ec7025064a95b7316f013e659cc6fa44f634895e242e3a713184c563dcb58ef"
+  },
+  "layouts": {
+    "close": {
+      "source": "close-waveforms.csv",
+      "eye_traces_per_mode": 116,
+      "saved_waveform_identity_max_error_v": 5.551115123125783e-17,
+      "green_window": "Saved switching voltage meets illustrative limits; the eye requires all observed high/low bits to meet them.",
+      "clock_is_synthetic_reference": true
+    },
+    "separated": {
+      "source": "separated-waveforms.csv",
+      "eye_traces_per_mode": 116,
+      "saved_waveform_identity_max_error_v": 5.551115123125783e-17,
+      "green_window": "Saved switching voltage meets illustrative limits; the eye requires all observed high/low bits to meet them.",
+      "clock_is_synthetic_reference": true
+    }
+  },
+  "image_sha256": "4d6a419cc891644575a7f17bdb0e0e587a94ab552ad3d07c716fb02e061e0fe5"
+}

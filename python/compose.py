@@ -36,6 +36,8 @@ def compose(root):
         fig.savefig(root/f'{role}-coupling.png',dpi=150,facecolor='white');plt.close(fig)
     html='<!doctype html><meta charset="utf-8"><title>Crosstalk: mesh, field, eye</title><style>body{max-width:1300px;margin:32px auto;font:17px system-ui;color:#253340;background:white}img{width:100%}table{width:100%;text-align:left}td,th{padding:8px}p{line-height:1.5}</style>'
     for role in ['weaker','stronger']:html+=f'<img src="{role}-coupling.png" alt="Actual Gmsh mesh, ParaView field and victim eye for {role} measured coupling">'
+    if (root/'reference-timing.png').exists():
+        html+='<img src="reference-timing.png" alt="Clock-aligned saved victim voltages; ideal reference DQS, illustrative voltage-valid window, no device setup or hold margin">'
     html+='<table><tr><th>Gap</th><th>Added noise</th><th>Quiet opening</th><th>Switching opening</th><th>Mesh /domain /frequency</th></tr>'
     for name in ranked:
         r=report['cases'][name];m=r['metrics'];c=r['checks']

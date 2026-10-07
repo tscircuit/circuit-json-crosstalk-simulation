@@ -24,7 +24,7 @@ def run(directory, render=False):
     receipt['source_sha256'] = {
         name: hashlib.sha256((root.parent/name).read_bytes()).hexdigest()
         for name in ['lib/export.ts','lib/prepare.ts','lib/config.ts','python/adapter.py',
-                     'python/results.py','python/run_native.py','python/render.py','python/compose.py','python/eyes.py']
+                     'python/results.py','python/run_native.py','python/render.py','python/compose.py','python/eyes.py','python/timing.py']
     }
     def stop(_signal, _frame):
         raise InterruptedError('Native pipeline interrupted')

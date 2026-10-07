@@ -25,6 +25,12 @@ Saved native run (984 solves; ParaView 6.2.0):
 
 ![Stronger measured coupling: actual mesh, field and eye](examples/results/stronger-coupling.png)
 
+The additional timing view uses the same saved victim voltages and fixed sampling phase. DQS is an **ideal reference**, with both edges sampling; no clock channel was simulated. Green marks explanatory 0.15/0.60 V voltage limits, not device thresholds or measured setup/hold margins.
+
+![Victim data and eye relative to an ideal sampling DQS](examples/results/reference-timing.png)
+
+New runs save this view automatically. Generate it once from an older saved run without a solver using `"$PALACE_PYTHON" python/timing.py output/<run>`; existing timing outputs are preserved.
+
 | Gap | Added-noise peak | Quiet / switching opening | Complex-S mesh | Air / frequency sensitivity |
 | --- | --- | --- | --- | --- |
 | 0.1 mm | 30.1 mV | 747.9 / 714.1 mV | **Failed** | Passed / passed |
@@ -40,7 +46,7 @@ The displayed added-noise ranking holds across coarse/fine/domain and all four t
 "$PALACE_PYTHON" python/diagnose.py output/<run> output/<run>/diagnosis-new.json
 ```
 
-The refinement guard now rejects a shorter transition to coarse size; existing runs used the same transition and their failures remain unchanged. A justified next diagnostic would hold CAD/ports/physics/far mesh/air fixed and refine the full near-trace dielectric volume at 0.25/1/10 GHz before another sweep. That probe is not run or qualified here.
+The refinement guard rejects a shorter transition to coarse size; existing runs used the same transition and their failures remain unchanged. Three controlled meshes per layout are prepared for 10 MHz, 250 MHz, 1 GHz, 8.75 GHz and 10 GHz: an unchanged-size volume-remesh control, central dielectric-volume refinement with every surface frozen, and aperture-interior refinement with all other surfaces/contact edges frozen. Physical CAD, terminals, materials, boundaries and solver settings match exactly. Median gap edge sizes decrease from 0.141/0.210 to 0.066/0.067 mm in the volume cases; aperture triangles increase from 46 to 212 in the port cases. [Preparation audit](examples/results/prepared-mesh-audit.json) records the actual controls and limitations. **Their native solves were never run**, so neither the absolute error nor FEXT instability is resolved by this preparation. Original qualification failures remain. Port refinement still remeshes adjacent volume; the wider volume case also has a low-quality tetrahedron under the frozen-interface constraint.
 
 The actual [exporter](https://github.com/tscircuit/circuit-json-to-gmsh) is pinned to `9c7f34b7`. `parseCircuitJson`, `createGeometryModel`, `createMeshRequirements` and `exportGmsh({conformal:true})` create and validate the board. `python/adapter.py` imports that BREP and maps its native mesh/manifest/report ownership by bounds and volume. It adds only a padded air box and four lumped apertures, then remeshes the extended domain conformally. It checks preserved material volume, shared interfaces, exterior absorbing faces, port area and literal contact nodes. The exporter's board validation mesh uses the configured far-size target; the EM remesh uses the near/far/transition settings. No custom PCB geometry generator replaces the package.
 

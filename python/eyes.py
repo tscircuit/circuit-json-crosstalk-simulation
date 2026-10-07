@@ -303,10 +303,13 @@ def process(root):
          'measured_smaller_opening_reduction_case':min(reports,key=lambda n:reports[n]['metrics']['opening_reduction_v']),
          'interpretation':'Measured outcomes for this declared testbench; no universal good/bad or routing claim. Compare switching-minus-quiet within each layout to isolate aggressor activity.'}
     save(root/'eye-summary.json',report)
+    from timing import save_timing
+    save_timing(root)
     html='<!doctype html><meta charset="utf-8"><title>Two-layout crosstalk demo</title><style>body{font:18px system-ui;max-width:1100px;margin:40px auto;color:#273744;background:white}img{width:100%}p{line-height:1.5}.warning{padding:16px;background:#fff3da}</style>'
     html+='<h1>Two layouts, the same victim signal</h1><p>Orange: aggressor travels right → left. Blue: victim travels left → right. Only spacing changes.</p>'
     for name in names:html+=f'<h2>{name.capitalize()} spacing</h2><img src="{name}-layout.png" alt="Actual rendered PCB geometry">'
     html+='<h2>What reaches the victim receiver?</h2><p>Each layout is tested with its aggressor quiet and switching. The axes, victim bits, loads and sampling reference are identical.</p><img src="eyes.png" alt="Actual channel-derived victim eyes"><img src="added-noise.png" alt="Switching minus quiet voltage">'
+    html+='<img src="reference-timing.png" alt="Saved victim voltages and eye relative to an ideal reference DQS; illustrative voltage windows, no setup or hold margin">'
     html+='<table style="border-collapse:collapse;width:100%"><tr><th align="left">Measured example</th><th>Added-noise peak</th><th>Quiet opening</th><th>Switching opening</th><th>Opening lost</th></tr>'
     for name,r in reports.items():
         m=r['metrics']

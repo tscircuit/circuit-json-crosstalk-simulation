@@ -1,0 +1,347 @@
+{
+  "native_status": "never_run",
+  "new_native_solves": 0,
+  "original_channel_qualification": "convergence_checks_failed",
+  "cases": {
+    "close/control": {
+      "native_status": "never_run",
+      "physical_hashes": {
+        "circuit.json": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+        "board/board.brep": "f452eedf7a1727d51c0007540ecadb7d29d5578e0b00d30a22800da6baf79590",
+        "terminal-map.json": "aeaa70da8a4a31453dde613fc9737736b5a0cdf8ad0c148fa4772b3c18a3c2d7",
+        "geometry.brep": "ca5f38ecd56eca62976f6d0c4f284d8524aa6746137fa080e8f2abbcc5f794f7"
+      },
+      "cad_and_terminal_bytes_identical": true,
+      "solver_physics_ports_unchanged": true,
+      "original_surface_and_field_cells_reproduced_before_mutation": true,
+      "field_tetrahedra": 29924,
+      "minimum_sicn": 0.24719792972175703,
+      "fixed_surface_groups": [
+        "triangle:11",
+        "triangle:12",
+        "triangle:13",
+        "triangle:14",
+        "triangle:15",
+        "triangle:21",
+        "triangle:22",
+        "triangle:23",
+        "triangle:24"
+      ],
+      "port_triangles": [
+        46,
+        46,
+        46,
+        46
+      ],
+      "signal_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "reference_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "central_dielectric_gap": {
+        "tetrahedra": 345,
+        "median_max_edge_mm": 0.1406145744595956,
+        "median_y_extent_mm": 0.07023703662036715,
+        "median_z_extent_mm": 0.09945065048720131
+      },
+      "mesh_audit_sha256": "12a49a88a4fd2ece2ba019f91ec0bc75e7bcaa0f72111c569fcef3d1e1ae3e93",
+      "mesh_sha256": "266547bddb66d35e911df8d8f59f6a74cddd983d64365229ff6ccd9f447136d7"
+    },
+    "close/gap_volume": {
+      "native_status": "never_run",
+      "physical_hashes": {
+        "circuit.json": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+        "board/board.brep": "f452eedf7a1727d51c0007540ecadb7d29d5578e0b00d30a22800da6baf79590",
+        "terminal-map.json": "aeaa70da8a4a31453dde613fc9737736b5a0cdf8ad0c148fa4772b3c18a3c2d7",
+        "geometry.brep": "ca5f38ecd56eca62976f6d0c4f284d8524aa6746137fa080e8f2abbcc5f794f7"
+      },
+      "cad_and_terminal_bytes_identical": true,
+      "solver_physics_ports_unchanged": true,
+      "original_surface_and_field_cells_reproduced_before_mutation": true,
+      "field_tetrahedra": 44887,
+      "minimum_sicn": 0.07422416315270228,
+      "fixed_surface_groups": [
+        "triangle:11",
+        "triangle:12",
+        "triangle:13",
+        "triangle:14",
+        "triangle:15",
+        "triangle:21",
+        "triangle:22",
+        "triangle:23",
+        "triangle:24"
+      ],
+      "port_triangles": [
+        46,
+        46,
+        46,
+        46
+      ],
+      "signal_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "reference_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "central_dielectric_gap": {
+        "tetrahedra": 2647,
+        "median_max_edge_mm": 0.06644369303145167,
+        "median_y_extent_mm": 0.04995454554039598,
+        "median_z_extent_mm": 0.0427995751102624
+      },
+      "mesh_audit_sha256": "c327e8818127de965cedc17ea7e511e9e52a9e400cef017eca6307c91e0f9878",
+      "mesh_sha256": "106d3b313b53448c40f3e453902efc5e5c6bed92f824ecc6a6641443f226bf94"
+    },
+    "close/port_surface": {
+      "native_status": "never_run",
+      "physical_hashes": {
+        "circuit.json": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+        "board/board.brep": "f452eedf7a1727d51c0007540ecadb7d29d5578e0b00d30a22800da6baf79590",
+        "terminal-map.json": "aeaa70da8a4a31453dde613fc9737736b5a0cdf8ad0c148fa4772b3c18a3c2d7",
+        "geometry.brep": "ca5f38ecd56eca62976f6d0c4f284d8524aa6746137fa080e8f2abbcc5f794f7"
+      },
+      "cad_and_terminal_bytes_identical": true,
+      "solver_physics_ports_unchanged": true,
+      "original_surface_and_field_cells_reproduced_before_mutation": true,
+      "field_tetrahedra": 32088,
+      "minimum_sicn": 0.23579378587473723,
+      "fixed_surface_groups": [
+        "triangle:11",
+        "triangle:12",
+        "triangle:13",
+        "triangle:14",
+        "triangle:15"
+      ],
+      "port_triangles": [
+        212,
+        212,
+        212,
+        212
+      ],
+      "signal_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "reference_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "central_dielectric_gap": {
+        "tetrahedra": 345,
+        "median_max_edge_mm": 0.1406145744595956,
+        "median_y_extent_mm": 0.07023703662036715,
+        "median_z_extent_mm": 0.09945065048720131
+      },
+      "mesh_audit_sha256": "5a621c990c0d20fdfea320bb93cc680d753682ac46c2a9616c44f32437423c89",
+      "mesh_sha256": "29e988d12aaeaee9643c98e9dd5b2d9ec75198e17a9de3429ba6040eed80a123"
+    },
+    "separated/control": {
+      "native_status": "never_run",
+      "physical_hashes": {
+        "circuit.json": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+        "board/board.brep": "19cf68fd488f17a923269e3a0cdacd3316981c7c545a0fc8867763d08ca5e9d8",
+        "terminal-map.json": "0b7e563ed93bce7ebb61ed4805128bb0248646fef62223d26f5bbfd2e17fe2a2",
+        "geometry.brep": "5df77b13f1a85c04c66ecf64e648b4bf049f96273fbd8f7a5e49a60d42e3446e"
+      },
+      "cad_and_terminal_bytes_identical": true,
+      "solver_physics_ports_unchanged": true,
+      "original_surface_and_field_cells_reproduced_before_mutation": true,
+      "field_tetrahedra": 30241,
+      "minimum_sicn": 0.158922966401527,
+      "fixed_surface_groups": [
+        "triangle:11",
+        "triangle:12",
+        "triangle:13",
+        "triangle:14",
+        "triangle:15",
+        "triangle:21",
+        "triangle:22",
+        "triangle:23",
+        "triangle:24"
+      ],
+      "port_triangles": [
+        46,
+        46,
+        46,
+        46
+      ],
+      "signal_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "reference_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "central_dielectric_gap": {
+        "tetrahedra": 594,
+        "median_max_edge_mm": 0.21017250099639587,
+        "median_y_extent_mm": 0.11723766079211229,
+        "median_z_extent_mm": 0.1385728628677899
+      },
+      "mesh_audit_sha256": "a0e8d0df08c5777e0036bc06d0c4061fc2cb308813e1ad2d2259f5f35788455d",
+      "mesh_sha256": "bfe92b53cd27758981b539599e72930d2e147507decd3a761b4fe62bea798ba6"
+    },
+    "separated/gap_volume": {
+      "native_status": "never_run",
+      "physical_hashes": {
+        "circuit.json": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+        "board/board.brep": "19cf68fd488f17a923269e3a0cdacd3316981c7c545a0fc8867763d08ca5e9d8",
+        "terminal-map.json": "0b7e563ed93bce7ebb61ed4805128bb0248646fef62223d26f5bbfd2e17fe2a2",
+        "geometry.brep": "5df77b13f1a85c04c66ecf64e648b4bf049f96273fbd8f7a5e49a60d42e3446e"
+      },
+      "cad_and_terminal_bytes_identical": true,
+      "solver_physics_ports_unchanged": true,
+      "original_surface_and_field_cells_reproduced_before_mutation": true,
+      "field_tetrahedra": 69814,
+      "minimum_sicn": 0.0005196379806112751,
+      "fixed_surface_groups": [
+        "triangle:11",
+        "triangle:12",
+        "triangle:13",
+        "triangle:14",
+        "triangle:15",
+        "triangle:21",
+        "triangle:22",
+        "triangle:23",
+        "triangle:24"
+      ],
+      "port_triangles": [
+        46,
+        46,
+        46,
+        46
+      ],
+      "signal_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "reference_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "central_dielectric_gap": {
+        "tetrahedra": 21822,
+        "median_max_edge_mm": 0.06684935404830775,
+        "median_y_extent_mm": 0.051117141000013924,
+        "median_z_extent_mm": 0.03996456413659112
+      },
+      "mesh_audit_sha256": "3c978b4c5004d0826fffe78058d0449bed38fa32eaaae0e3a27b39d50921be95",
+      "mesh_sha256": "5ef693c274cfad760f6828a9687a6128503f5f983a379f793b0231eaa54c1258"
+    },
+    "separated/port_surface": {
+      "native_status": "never_run",
+      "physical_hashes": {
+        "circuit.json": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+        "board/board.brep": "19cf68fd488f17a923269e3a0cdacd3316981c7c545a0fc8867763d08ca5e9d8",
+        "terminal-map.json": "0b7e563ed93bce7ebb61ed4805128bb0248646fef62223d26f5bbfd2e17fe2a2",
+        "geometry.brep": "5df77b13f1a85c04c66ecf64e648b4bf049f96273fbd8f7a5e49a60d42e3446e"
+      },
+      "cad_and_terminal_bytes_identical": true,
+      "solver_physics_ports_unchanged": true,
+      "original_surface_and_field_cells_reproduced_before_mutation": true,
+      "field_tetrahedra": 32489,
+      "minimum_sicn": 0.15892296640152692,
+      "fixed_surface_groups": [
+        "triangle:11",
+        "triangle:12",
+        "triangle:13",
+        "triangle:14",
+        "triangle:15"
+      ],
+      "port_triangles": [
+        212,
+        212,
+        212,
+        212
+      ],
+      "signal_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "reference_contact_nodes": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "central_dielectric_gap": {
+        "tetrahedra": 594,
+        "median_max_edge_mm": 0.21017250099639587,
+        "median_y_extent_mm": 0.11723766079211229,
+        "median_z_extent_mm": 0.1385728628677899
+      },
+      "mesh_audit_sha256": "ecd6793550c8bfef0f40c7bf447b1e348c1e718fd954fcc04671bda6276227da",
+      "mesh_sha256": "a5ef2c75749adcb071e385f75d7d5993072b3b53079112a98866733f4e3734ff"
+    }
+  },
+  "numerical_comparison": null,
+  "interpretation": "Prepared controls verify intended mesh changes only. No new native solve or S-parameter sensitivity comparison exists; all original qualification failures remain.",
+  "limitations": [
+    "Port-interior refinement requires an adjacent-volume remesh; control quantifies topology drift only after native runs.",
+    "Frozen dielectric interfaces constrain attainable interior resolution and produce a low-quality tetrahedron in the wider volume-refined case.",
+    "Five sampled frequencies cannot qualify a whole broadband channel; isolated true residual accuracy remains unproven.",
+    "Port contact-edge discretization is held fixed; the port probe tests aperture interiors and their required adjacent-volume remesh, not all possible port errors."
+  ],
+  "official_mesh_api_source": "https://gmsh.info/doc/texinfo/gmsh.html",
+  "protocol": {
+    "source_revision": "67eb6ab2478ce10cde09b769728c926a338d523d",
+    "source_adapter_sha256": "53b02f8dfe7d4384aabe4ff686bfe6350938a198cd816a64271533f2c5477e09",
+    "frequencies_hz": [
+      10000000.0,
+      250000000.0,
+      1000000000.0,
+      8750000000.0,
+      10000000000.0
+    ],
+    "four_independent_excitations": true,
+    "acceptance": {
+      "all_complex_S_absolute": 0.01,
+      "selected_complex_coupling_relative": 0.05,
+      "relative_floor": 0.0001,
+      "passivity": 0.0001,
+      "reciprocity": 0.0001
+    },
+    "controls": {
+      "control": "All original fine surface cells held exactly; unchanged field sizes; regenerated volume only.",
+      "gap_volume": "Same frozen surface cells, including ports; add 0.04 mm central full-dielectric volume size box, away from aperture planes.",
+      "port_surface": "Same curves and all non-port surface cells; refine only aperture interior to 0.02 mm; unchanged volume size field."
+    },
+    "fixed_physics": "Original Circuit JSON, CAD, terminal geometry, PEC/Er/loss/permeability, air/boundaries, 50-ohm ports, four independent excitations and SuperLU/GMRES tolerance unchanged.",
+    "limits": {
+      "field_tetrahedra": 200000,
+      "case_seconds": 240,
+      "aggregate_rss_bytes": 6442450944,
+      "threads": 1,
+      "mpi_ranks": 1
+    },
+    "qualification_scope": "Informative selected-frequency sensitivity; no new eye, clock or board result; original convergence failures remain."
+  }
+}
