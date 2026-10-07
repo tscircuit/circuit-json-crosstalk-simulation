@@ -468,5 +468,8 @@
     "Finite-pattern eyes at one selected phase; no BER/compliance, optimized routing or actual DDR qualification.",
     "Two-mesh/two-domain sensitivities do not establish an asymptotic error bound; failed gates remain explicit."
   ],
-  "raw_artifact_policy": "Exact CJ/setup and raw S CSV are included here. Native meshes, original PVD/PVTU/VTU, all logs, receipts and full waveforms stay in the separately saved run output. No DDR board data is included."
+  "raw_artifact_policy": "Exact CJ/setup and raw S CSV are included here. Native meshes, original PVD/PVTU/VTU, all logs, receipts and full waveforms stay in the separately saved run output. No DDR board data is included.",
+  "original_native_snapshot_revision": "457058b1bd4394ee6f4fc5a50b5fc70eceded3f5",
+  "followup_diagnosis": "diagnosis.json",
+  "source_fingerprint_scope": "Original source_sha256 records the native/eye snapshot at457058b, before the guard-only validation follow-up. No native source fingerprint is backfilled."
 }

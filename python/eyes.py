@@ -128,6 +128,15 @@ def difference(a,b):
     return float(max(np.max(abs(a[k]-np.interp(a['t'],b['t'],b[k]))) for k in ['quiet','switching','noise']))
 
 
+def mesh_refinement(fine, coarse):
+    # Threshold size grows from near to far over transition_mm. A shorter
+    # transition coarsens the interior even when the edge minimum is smaller.
+    return (fine['near_mm'] <= coarse['near_mm'] and
+            fine['far_mm'] <= coarse['far_mm'] and
+            fine['transition_mm'] >= coarse['transition_mm'] and
+            fine != coarse)
+
+
 def metrics(w, condition):
     ui = 1/condition['bit_rate_hz']
     indices = np.arange(condition['discard_bits'],condition['bits']-condition['end_margin_bits'])
@@ -199,7 +208,7 @@ def process(root):
             raise ValueError('Refinement comparison requires identical physical input and frequency grid')
         fine_setup=dict(model['setup']); coarse_setup=dict(mc['setup'])
         fm=fine_setup.pop('mesh'); cm=coarse_setup.pop('mesh')
-        if fine_setup!=coarse_setup or not all(fm[k]<=cm[k] for k in fm) or not any(fm[k]<cm[k] for k in fm):
+        if fine_setup!=coarse_setup or not mesh_refinement(fm,cm):
             raise ValueError('Refinement must tighten mesh without changing other analysis choices')
         fine_tets=json.loads((fine/'mesh-report.json').read_text())['field_tetrahedra']
         coarse_tets=json.loads((coarse/'mesh-report.json').read_text())['field_tetrahedra']
