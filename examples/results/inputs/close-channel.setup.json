@@ -1,0 +1,77 @@
+{
+  "trace_ids": [
+    "pcb_trace_0",
+    "pcb_trace_1"
+  ],
+  "reference_copper_id": "pcb_copper_pour_0",
+  "reference_net_id": "source_net_0",
+  "conductor_model": "pec",
+  "dielectric_model": "constant_er_and_loss_tangent",
+  "relative_permeability": 1,
+  "soldermask": "omitted",
+  "port_inset_mm": 0.4,
+  "port_resistance_ohms": 50,
+  "frequency_hz": [
+    10000000,
+    250000000,
+    500000000,
+    750000000,
+    1000000000,
+    1250000000,
+    1500000000,
+    1750000000,
+    2000000000,
+    2250000000,
+    2500000000,
+    2750000000,
+    3000000000,
+    3250000000,
+    3500000000,
+    3750000000,
+    4000000000,
+    4250000000,
+    4500000000,
+    4750000000,
+    5000000000,
+    5250000000,
+    5500000000,
+    5750000000,
+    6000000000,
+    6250000000,
+    6500000000,
+    6750000000,
+    7000000000,
+    7250000000,
+    7500000000,
+    7750000000,
+    8000000000,
+    8250000000,
+    8500000000,
+    8750000000,
+    9000000000,
+    9250000000,
+    9500000000,
+    9750000000,
+    10000000000
+  ],
+  "save_fields_at_hz": [
+    1000000000
+  ],
+  "air_padding_mm": 1,
+  "mesh": {
+    "near_mm": 0.04,
+    "far_mm": 0.45,
+    "transition_mm": 0.4
+  },
+  "boundary": "first_order_absorbing",
+  "solver": {
+    "order": 1,
+    "type": "SuperLU",
+    "tolerance": 1e-9,
+    "max_iterations": 200
+  },
+  "checks": {
+    "passivity_tolerance": 0.0001,
+    "reciprocity_tolerance": 0.0001
+  }
+}

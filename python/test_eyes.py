@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 import numpy as np
-from eyes import causal_fit, channel, difference, source, waveforms
+from eyes import causal_fit, channel, difference, mesh_refinement, source, waveforms
 
 
 CONDITION = {'bit_rate_hz':1.6e9,'driver_low_v':0,'driver_high_v':1.5,
@@ -14,6 +14,19 @@ F = np.r_[1e7,np.arange(1,41)*2.5e8]
 
 
 class ChannelTests(unittest.TestCase):
+    def test_shorter_transition_is_coarser_despite_smaller_edge_minimum(self):
+        coarse={'near_mm':.06,'far_mm':.45,'transition_mm':.4}
+        fine={'near_mm':.04,'far_mm':.45,'transition_mm':.2}
+        # At 0.1mm from a copper edge, the requested size grows from
+        # 0.1575 to0.245mm: this is not a uniformly finer field.
+        self.assertFalse(mesh_refinement(fine,coarse))
+
+    def test_refinement_keeps_or_expands_the_fine_region(self):
+        coarse={'near_mm':.06,'far_mm':.45,'transition_mm':.4}
+        self.assertTrue(mesh_refinement({**coarse,'near_mm':.04},coarse))
+        self.assertTrue(mesh_refinement({**coarse,'transition_mm':.5},coarse))
+        self.assertFalse(mesh_refinement(coarse,coarse))
+
     def test_real_causal_fit_preserves_exact_matched_dc(self):
         target=np.column_stack([.5*np.exp(-2j*np.pi*F*25e-12),np.zeros(len(F))])
         taps,report=causal_fit(F,target,CONDITION['time_step_s'])

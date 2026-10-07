@@ -50,27 +50,3 @@ export function palaceConfig(model: PreparedModel) {
     },
   }
 }
-
-export function geometrySvg(model: PreparedModel): string {
-  const [x0, y0, x1, y1] = model.board.bounds_mm
-  const rect = (b: number[], fill: string, opacity = 1) =>
-    `<rect x="${b[0]}" y="${-b[3]}" width="${b[2] - b[0]}" height="${b[3] - b[1]}" fill="${fill}" opacity="${opacity}"/>`
-  const signals = model.signals
-    .map((s) => {
-      // Pads cover the round wire caps: the exact union is one rectangle.
-      const lo = Math.min(
-        s.x_min_mm - s.width_mm / 2,
-        ...s.pads.map((p) => p.x_mm - p.width_mm / 2),
-      )
-      const hi = Math.max(
-        s.x_max_mm + s.width_mm / 2,
-        ...s.pads.map((p) => p.x_mm + p.width_mm / 2),
-      )
-      return rect(
-        [lo, s.y_mm - s.width_mm / 2, hi, s.y_mm + s.width_mm / 2],
-        "#db7d24",
-      )
-    })
-    .join("")
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="${x0 - 0.2} ${-y1 - 0.2} ${x1 - x0 + 0.4} ${y1 - y0 + 0.4}" role="img" aria-label="Circuit JSON copper geometry; not a simulated field">${rect([x0, y0, x1, y1], "#e1e8e6")}${rect(model.reference.bounds_mm, "#428d9a", 0.45)}${signals}</svg>\n`
-}

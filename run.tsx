@@ -1,10 +1,11 @@
-import { mkdir } from "node:fs/promises"
+import { mkdir, stat } from "node:fs/promises"
 import { resolve } from "node:path"
 import { parseArgs } from "node:util"
 import { renderCoupledRoutes } from "./examples/coupled-routes"
 import { eyeConditions, eyeSetup } from "./examples/eye-setup"
 import { simulate } from "./index"
 import { prepare } from "./lib/prepare"
+import { render, renderRuntime } from "./render"
 
 const { values } = parseArgs({
   options: {
@@ -17,7 +18,7 @@ const { values } = parseArgs({
 })
 if (values.help) {
   console.log(
-    "bun run simulate [--gap 0.1] [--wide-gap 0.8] [--mesh-near 0.04] [--output output/my-run]\nRenders two layouts, runs four native broadband channels (two meshes each), then compares quiet/switching victim eyes. Requires installed Python packages and Palace. No cached/synthetic channel fallback.",
+    "bun run simulate [--gap 0.1] [--wide-gap 0.8] [--mesh-near 0.04] [--output output/my-run]\nRenders two layouts, runs six native broadband channels (two meshes and a larger air domain each), then compares quiet/switching victim eyes. Requires installed Python packages, Palace and ParaView. No cached/synthetic channel fallback.",
   )
   process.exit(0)
 }
@@ -35,7 +36,16 @@ process.once("SIGINT", cancel)
 process.once("SIGTERM", cancel)
 const output = resolve(values.output ?? `output/${crypto.randomUUID()}`)
 const python = process.env.PALACE_PYTHON ?? Bun.which("python3") ?? ""
-const cases: Record<string, { channel: string; coarse: string }> = {}
+await renderRuntime()
+const palace = process.env.PALACE_BIN ?? Bun.which("palace")
+if (!palace || !(await stat(palace)).isFile())
+  throw new Error(
+    "Native simulation requires an installed Palace binary (PALACE_BIN)",
+  )
+const cases: Record<
+  string,
+  { channel: string; coarse: string; domain: string }
+> = {}
 const fixtures = []
 try {
   await mkdir(resolve(output, ".."), { recursive: true })
@@ -97,6 +107,7 @@ try {
     cases[name] = {
       channel: `${directory}/channel`,
       coarse: `${directory}/coarse`,
+      domain: `${directory}/domain`,
     }
   }
   console.log(
@@ -110,12 +121,15 @@ try {
     for (const [kind, near] of [
       ["coarse", meshNear * 1.5],
       ["channel", meshNear],
+      ["domain", meshNear],
     ] as const) {
       console.log(
         `${name}: native broadband ${kind}, near mesh ${near} mm, 41 frequencies × 4 excitations`,
       )
+      const setup = eyeSetup(circuitJson, near)
+      if (kind === "domain") setup.air_padding_mm = 1.5
       const result = await simulate(circuitJson, {
-        setup: eyeSetup(circuitJson, near),
+        setup,
         output_directory: cases[name][kind],
         signal: controller.signal,
       })
@@ -125,11 +139,12 @@ try {
     }
   }
   await postprocess([output])
+  await render(output)
   const summary = await Bun.file(`${output}/eye-summary.json`).json()
   console.log(
-    `Open ${output}/index.html. Layouts first, then same-axis eyes and added noise. ${summary.status}.`,
+    `Open ${output}/index.html. Actual mesh, ParaView field and eye images saved. ${summary.status}.`,
   )
-  if (summary.status !== "loaded_voltage_checks_passed") process.exitCode = 1
+  if (summary.status !== "convergence_checks_passed") process.exitCode = 1
 } finally {
   process.removeListener("SIGINT", cancel)
   process.removeListener("SIGTERM", cancel)

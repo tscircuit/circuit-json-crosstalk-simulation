@@ -1,7 +1,7 @@
 import { mkdir, stat } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
 import { prepare } from "./prepare"
-import { geometrySvg, palaceConfig } from "./config"
+import { palaceConfig } from "./config"
 import type { AnalyzeOptions, AnalysisResult, CircuitJson } from "./types"
 
 const json = (value: unknown) => JSON.stringify(value, null, 2) + "\n"
@@ -39,7 +39,6 @@ export async function run(
   await write("setup.json", options.setup)
   await write("model.json", preflight.model)
   await write("palace.json", palaceConfig(preflight.model))
-  await Bun.write(`${output}/geometry.svg`, geometrySvg(preflight.model))
   const result: AnalysisResult = {
     status: "exported",
     output_directory: output,

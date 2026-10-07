@@ -8,7 +8,7 @@ export function eyeSetup(circuitJson: CircuitJson, near_mm = 0.04) {
     1e7,
     ...Array.from({ length: 40 }, (_, i) => (i + 1) * 2.5e8),
   ]
-  setup.save_fields_at_hz = []
+  setup.save_fields_at_hz = [1e9]
   setup.mesh = { near_mm, far_mm: 0.45, transition_mm: 0.4 }
   return setup
 }

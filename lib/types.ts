@@ -72,6 +72,7 @@ export type Preflight =
   | { status: "missing_data" | "unsupported"; issues: string[] }
 
 export interface Runtime {
+  bun?: string
   python: string
   palace: string
   /** One MPI rank and one thread; all subprocesses share this wall/RSS/disk budget. */

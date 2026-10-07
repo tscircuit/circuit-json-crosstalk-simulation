@@ -1,0 +1,995 @@
+{
+  "status": "convergence_checks_failed",
+  "new_solver_runs": 0,
+  "cases": {
+    "close": {
+      "input_hashes": {
+        "circuit.json": "4b3a0a9a55d44c64c7bdbfbd0379a1310051e659c09be21bf5d2389c19ff5846",
+        "board/board.brep": "f452eedf7a1727d51c0007540ecadb7d29d5578e0b00d30a22800da6baf79590",
+        "terminal-map.json": "aeaa70da8a4a31453dde613fc9737736b5a0cdf8ad0c148fa4772b3c18a3c2d7",
+        "coarse_fine_extended_CAD": "ca5f38ecd56eca62976f6d0c4f284d8524aa6746137fa080e8f2abbcc5f794f7"
+      },
+      "mesh": {
+        "maximum_all_S_absolute_change": 0.03698286857880662,
+        "worst_term": "S22",
+        "worst_frequency_hz": 10000000000.0,
+        "worst_term_components": {
+          "before_real": 0.00014023736529987166,
+          "before_imag": -0.020750507022337366,
+          "after_real": 0.03698059459013842,
+          "after_imag": -0.01750695220338201,
+          "before_magnitude": 0.020750980897362385,
+          "after_magnitude": 0.04091525084478497,
+          "absolute_complex_change": 0.03698286857880662,
+          "radial_magnitude_difference": 0.020164269947422587,
+          "angular_component": 0.031002173888370357,
+          "phase_difference_deg": 64.27948267963001
+        },
+        "NEXT_S42": {
+          "maximum_absolute_change": 0.021854891117327163,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.3721735405165729,
+            "before_imag": 0.03828123455022371,
+            "after_real": 0.35093849091017365,
+            "after_imag": 0.04344930323823357,
+            "before_magnitude": 0.3741371368620474,
+            "after_magnitude": 0.353617966673355,
+            "absolute_complex_change": 0.021854891117327163,
+            "radial_magnitude_difference": 0.020519170188692426,
+            "angular_component": 0.007523291867108636,
+            "phase_difference_deg": 1.1851019544020003
+          },
+          "maximum_relative_change": 0.06658532456172557,
+          "relative_worst_frequency_hz": 10000000.0,
+          "at_relative_worst": {
+            "before_real": 8.275701558663446e-07,
+            "before_imag": 0.0005362256090407654,
+            "after_real": 7.548327842386919e-07,
+            "after_imag": 0.0005005208843927138,
+            "before_magnitude": 0.0005362262476450614,
+            "after_magnitude": 0.0005005214535719688,
+            "absolute_complex_change": 3.570479873796263e-05,
+            "radial_magnitude_difference": 3.5704794073092554e-05,
+            "angular_component": 1.8251478593715197e-08,
+            "phase_difference_deg": 0.0020185304399990686
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "FEXT_S41": {
+          "maximum_absolute_change": 0.013762035842198646,
+          "absolute_worst_frequency_hz": 8750000000.0,
+          "at_absolute_worst": {
+            "before_real": -0.043355061603963005,
+            "before_imag": -0.015997225276592256,
+            "after_real": -0.053049431485617166,
+            "after_imag": -0.0062292765093414325,
+            "before_magnitude": 0.046212255768718645,
+            "after_magnitude": 0.05341391267054889,
+            "absolute_complex_change": 0.013762035842198646,
+            "radial_magnitude_difference": 0.007201656901830243,
+            "angular_component": 0.011727308659290973,
+            "phase_difference_deg": -13.555908353400008
+          },
+          "maximum_relative_change": 0.9541754807116806,
+          "relative_worst_frequency_hz": 250000000.0,
+          "at_relative_worst": {
+            "before_real": -1.4541206897973527e-06,
+            "before_imag": -0.0006980453988942699,
+            "after_real": -4.894448038128988e-05,
+            "after_imag": -0.0013624094475818554,
+            "before_magnitude": 0.0006980469134552784,
+            "after_magnitude": 0.001363288327911631,
+            "absolute_complex_change": 0.0006660592492054951,
+            "radial_magnitude_difference": 0.0006652414144563526,
+            "angular_component": 3.299672626638896e-05,
+            "phase_difference_deg": -1.9381082410200101
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "through_S43": {
+          "maximum_absolute_change": 0.01997204002238129,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.1050523822610873,
+            "before_imag": -0.9162670713772295,
+            "after_real": 0.12445794571382048,
+            "after_imag": -0.920990046047662,
+            "before_magnitude": 0.9222696726602988,
+            "after_magnitude": 0.9293613103471539,
+            "absolute_complex_change": 0.01997204002238129,
+            "radial_magnitude_difference": 0.007091637686855057,
+            "angular_component": 0.018670593391051506,
+            "phase_difference_deg": 1.1554917655400074
+          },
+          "maximum_relative_change": 0.021655314724566062,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.1050523822610873,
+            "before_imag": -0.9162670713772295,
+            "after_real": 0.12445794571382048,
+            "after_imag": -0.920990046047662,
+            "before_magnitude": 0.9222696726602988,
+            "after_magnitude": 0.9293613103471539,
+            "absolute_complex_change": 0.01997204002238129,
+            "radial_magnitude_difference": 0.007091637686855057,
+            "angular_component": 0.018670593391051506,
+            "phase_difference_deg": 1.1554917655400074
+          },
+          "relative_denominator_floor": 0.0001
+        }
+      },
+      "domain": {
+        "maximum_all_S_absolute_change": 0.003345236399872789,
+        "worst_term": "S34",
+        "worst_frequency_hz": 10000000000.0,
+        "worst_term_components": {
+          "before_real": 0.12445794571382048,
+          "before_imag": -0.920990046047662,
+          "after_real": 0.12769786113226878,
+          "after_imag": -0.9218228453346062,
+          "before_magnitude": 0.9293613103471539,
+          "after_magnitude": 0.9306256507954987,
+          "absolute_complex_change": 0.003345236399872789,
+          "radial_magnitude_difference": 0.0012643404483448917,
+          "angular_component": 0.003097103453505049,
+          "phase_difference_deg": 0.19080895006999138
+        },
+        "NEXT_S42": {
+          "maximum_absolute_change": 0.0008600004731101358,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.35093849091017365,
+            "before_imag": 0.04344930323823357,
+            "after_real": 0.3512101984879748,
+            "after_imag": 0.04426525409822153,
+            "before_magnitude": 0.353617966673355,
+            "after_magnitude": 0.3539887233265246,
+            "absolute_complex_change": 0.0008600004731101358,
+            "radial_magnitude_difference": 0.0003707566531696016,
+            "angular_component": 0.0007759770086027964,
+            "phase_difference_deg": 0.12566365817200226
+          },
+          "maximum_relative_change": 0.002432004462896926,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.35093849091017365,
+            "before_imag": 0.04344930323823357,
+            "after_real": 0.3512101984879748,
+            "after_imag": 0.04426525409822153,
+            "before_magnitude": 0.353617966673355,
+            "after_magnitude": 0.3539887233265246,
+            "absolute_complex_change": 0.0008600004731101358,
+            "radial_magnitude_difference": 0.0003707566531696016,
+            "angular_component": 0.0007759770086027964,
+            "phase_difference_deg": 0.12566365817200226
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "FEXT_S41": {
+          "maximum_absolute_change": 0.0023759089736702524,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": -0.06061729526156975,
+            "before_imag": 0.007655429591437445,
+            "after_real": -0.058335603965050845,
+            "after_imag": 0.006992988440423467,
+            "before_magnitude": 0.061098789571134564,
+            "after_magnitude": 0.05875325163167697,
+            "absolute_complex_change": 0.0023759089736702524,
+            "radial_magnitude_difference": 0.0023455379394575968,
+            "angular_component": 0.0003786756207254729,
+            "phase_difference_deg": 0.3621249467999893
+          },
+          "maximum_relative_change": 0.049526023065209084,
+          "relative_worst_frequency_hz": 250000000.0,
+          "at_relative_worst": {
+            "before_real": -4.894448038128988e-05,
+            "before_imag": -0.0013624094475818554,
+            "after_real": -4.5874676159326664e-05,
+            "after_imag": -0.0012949610208145604,
+            "before_magnitude": 0.001363288327911631,
+            "after_magnitude": 0.001295773333319455,
+            "absolute_complex_change": 6.751824917268175e-05,
+            "radial_magnitude_difference": 6.751499459217605e-05,
+            "angular_component": 6.629302850062909e-07,
+            "phase_difference_deg": 0.028578018910012146
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "through_S43": {
+          "maximum_absolute_change": 0.0033452363998727887,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.12445794571382048,
+            "before_imag": -0.920990046047662,
+            "after_real": 0.12769786113226878,
+            "after_imag": -0.9218228453346062,
+            "before_magnitude": 0.9293613103471539,
+            "after_magnitude": 0.9306256507954987,
+            "absolute_complex_change": 0.003345236399872789,
+            "radial_magnitude_difference": 0.0012643404483448917,
+            "angular_component": 0.003097103453505049,
+            "phase_difference_deg": 0.19080895006999138
+          },
+          "maximum_relative_change": 0.003599500390890178,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.12445794571382048,
+            "before_imag": -0.920990046047662,
+            "after_real": 0.12769786113226878,
+            "after_imag": -0.9218228453346062,
+            "before_magnitude": 0.9293613103471539,
+            "after_magnitude": 0.9306256507954987,
+            "absolute_complex_change": 0.003345236399872789,
+            "radial_magnitude_difference": 0.0012643404483448917,
+            "angular_component": 0.003097103453505049,
+            "phase_difference_deg": 0.19080895006999138
+          },
+          "relative_denominator_floor": 0.0001
+        }
+      },
+      "local_mesh": {
+        "coarse": {
+          "centroid_probe_bounds_mm": [
+            -1.0,
+            -0.05000000000000002,
+            0,
+            1.0,
+            0.05000000000000002,
+            0.2
+          ],
+          "selected_tetrahedra": 234,
+          "longest_edge_mm_p10_median_p90": [
+            0.12885208141060914,
+            0.1601283529252956,
+            0.21360730006874
+          ],
+          "xyz_extent_mm_p10_median_p90": [
+            [
+              0.0652445356354138,
+              0.050000000000000086,
+              0.09572807236537122
+            ],
+            [
+              0.09786693458519258,
+              0.07141609315066437,
+              0.11363102533494092
+            ],
+            [
+              0.1826357485899106,
+              0.17461393477240772,
+              0.14547102751882524
+            ]
+          ],
+          "scope": "Centroid/edge statistics indicate resolution; they are not an EM error estimator."
+        },
+        "channel": {
+          "centroid_probe_bounds_mm": [
+            -1.0,
+            -0.05000000000000002,
+            0,
+            1.0,
+            0.05000000000000002,
+            0.2
+          ],
+          "selected_tetrahedra": 345,
+          "longest_edge_mm_p10_median_p90": [
+            0.10631904691849454,
+            0.1406145744595956,
+            0.1705212385348643
+          ],
+          "xyz_extent_mm_p10_median_p90": [
+            [
+              0.04543818580798398,
+              0.04999188346551637,
+              0.07728122363754152
+            ],
+            [
+              0.07411984773810676,
+              0.07023703662036715,
+              0.09945065048720131
+            ],
+            [
+              0.14818460554273913,
+              0.12701552122151302,
+              0.14010141001169743
+            ]
+          ],
+          "scope": "Centroid/edge statistics indicate resolution; they are not an EM error estimator."
+        }
+      },
+      "eye_variants": {
+        "coarse": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0010665313246528791,
+            "minimum_high_at_fixed_center_v": 0.7489334686753468,
+            "observed_center_opening_v": 0.747866937350694
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.01878830220778135,
+            "minimum_high_at_fixed_center_v": 0.7312116977922186,
+            "observed_center_opening_v": 0.7124233955844372
+          },
+          "switching_minus_quiet_peak_v": 0.03215703952686126,
+          "opening_reduction_v": 0.03544354176625675,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "channel": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0010336427097502427,
+            "minimum_high_at_fixed_center_v": 0.74896635729025,
+            "observed_center_opening_v": 0.7479327145804997
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.017942276311246185,
+            "minimum_high_at_fixed_center_v": 0.7320577236887544,
+            "observed_center_opening_v": 0.7141154473775082
+          },
+          "switching_minus_quiet_peak_v": 0.030060282876934397,
+          "opening_reduction_v": 0.0338172672029915,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "domain": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0010313925338964237,
+            "minimum_high_at_fixed_center_v": 0.7489686074661034,
+            "observed_center_opening_v": 0.747937214932207
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.017942910632352888,
+            "minimum_high_at_fixed_center_v": 0.7320570893676475,
+            "observed_center_opening_v": 0.7141141787352946
+          },
+          "switching_minus_quiet_peak_v": 0.03001775973344528,
+          "opening_reduction_v": 0.033823036196912404,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "frequency_decimated": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0011170442775342284,
+            "minimum_high_at_fixed_center_v": 0.7488829557224665,
+            "observed_center_opening_v": 0.7477659114449323
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.018032447575863263,
+            "minimum_high_at_fixed_center_v": 0.7319675524241384,
+            "observed_center_opening_v": 0.713935104848275
+          },
+          "switching_minus_quiet_peak_v": 0.03002885540364524,
+          "opening_reduction_v": 0.03383080659665727,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "bandwidth_80_percent": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 3.987275254728041e-05,
+            "minimum_high_at_fixed_center_v": 0.7499601272474535,
+            "observed_center_opening_v": 0.7499202544949063
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.01696295987580543,
+            "minimum_high_at_fixed_center_v": 0.7330370401241951,
+            "observed_center_opening_v": 0.7160740802483897
+          },
+          "switching_minus_quiet_peak_v": 0.030035867266246838,
+          "opening_reduction_v": 0.03384617424651659,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "time_step_halved": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0008923006771396709,
+            "minimum_high_at_fixed_center_v": 0.7491076993228586,
+            "observed_center_opening_v": 0.748215398645719
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.017894734039465173,
+            "minimum_high_at_fixed_center_v": 0.732105265960533,
+            "observed_center_opening_v": 0.7142105319210679
+          },
+          "switching_minus_quiet_peak_v": 0.03012110604806378,
+          "opening_reduction_v": 0.034004866724651084,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "FIR_support_extended": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.001465263953048288,
+            "minimum_high_at_fixed_center_v": 0.7485347360469519,
+            "observed_center_opening_v": 0.7470694720939036
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.01839762090838384,
+            "minimum_high_at_fixed_center_v": 0.73160237909161,
+            "observed_center_opening_v": 0.7132047581832262
+          },
+          "switching_minus_quiet_peak_v": 0.030057829387357023,
+          "opening_reduction_v": 0.03386471391067747,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        }
+      },
+      "original_checks": {
+        "loaded_waveform_mesh_change_v": 0.002173489698587428,
+        "fixed_center_opening_mesh_change_v": 0.00169205179307097,
+        "time_step_halving_change_v": 0.00032182204364938904,
+        "frequency_grid_decimation_change_v": 0.00015326637183077363,
+        "bandwidth_80_percent_change_v": 0.002499841956595303,
+        "causal_fir_support_extension_change_v": 0.0008305020317249667,
+        "maximum_all_complex_S_mesh_change": 0.03698286857880662,
+        "maximum_selected_complex_coupling_relative_mesh_change": 0.9541754807116806,
+        "relative_coupling_denominator_floor": 0.0001,
+        "mesh_field_tetrahedra": [
+          19923,
+          29924
+        ],
+        "voltage_tolerance_v": 0.005,
+        "status": "passed",
+        "scope": "Local educational loaded-voltage checks; not full complex coupling convergence, asymptotic error bound or global SI qualification",
+        "domain_loaded_waveform_change_v": 0.0002701538311895568,
+        "domain_maximum_all_complex_S_change": 0.0033452363998727887,
+        "domain_maximum_selected_complex_coupling_relative_change": 0.049526023065209084,
+        "air_padding_mm": [
+          1,
+          1.5
+        ],
+        "truncation_convergence": "passed",
+        "frequency_status": "passed",
+        "full_complex_channel_mesh_status": "failed",
+        "full_complex_channel_mesh_criteria": {
+          "maximum_all_S_absolute": 0.01,
+          "maximum_selected_coupling_relative": 0.05
+        },
+        "zero_drive_control_v": 0.0,
+        "quiet_control": "Same native coupled channel, aggressor source held at0V; linear superposition"
+      },
+      "solver": {
+        "coarse": {
+          "converged_excitations": 164,
+          "maximum_logged_initial_to_final_KSP_norm_ratio": 9.836170245900362e-09,
+          "scope": "Logged norm reduction; no independent true unpreconditioned-residual bound."
+        },
+        "channel": {
+          "converged_excitations": 164,
+          "maximum_logged_initial_to_final_KSP_norm_ratio": 4.232994511791482e-09,
+          "scope": "Logged norm reduction; no independent true unpreconditioned-residual bound."
+        },
+        "domain": {
+          "converged_excitations": 164,
+          "maximum_logged_initial_to_final_KSP_norm_ratio": 4.3129990638155325e-09,
+          "scope": "Logged norm reduction; no independent true unpreconditioned-residual bound."
+        }
+      }
+    },
+    "separated": {
+      "input_hashes": {
+        "circuit.json": "6a3e852545c78fe87dbd17709d7ca05d8b079e1a14a11bd8c38461f2c92a093f",
+        "board/board.brep": "19cf68fd488f17a923269e3a0cdacd3316981c7c545a0fc8867763d08ca5e9d8",
+        "terminal-map.json": "0b7e563ed93bce7ebb61ed4805128bb0248646fef62223d26f5bbfd2e17fe2a2",
+        "coarse_fine_extended_CAD": "5df77b13f1a85c04c66ecf64e648b4bf049f96273fbd8f7a5e49a60d42e3446e"
+      },
+      "mesh": {
+        "maximum_all_S_absolute_change": 0.03914802135426984,
+        "worst_term": "S33",
+        "worst_frequency_hz": 10000000000.0,
+        "worst_term_components": {
+          "before_real": 0.09757602831308639,
+          "before_imag": 0.003640310402632664,
+          "after_real": 0.1358919118775616,
+          "after_imag": 0.011669048947880258,
+          "before_magnitude": 0.09764391000561044,
+          "after_magnitude": 0.13639200276074473,
+          "absolute_complex_change": 0.03914802135426984,
+          "radial_magnitude_difference": 0.038748092755134286,
+          "angular_component": 0.005581476847025141,
+          "phase_difference_deg": 2.7713862875520006
+        },
+        "NEXT_S42": {
+          "maximum_absolute_change": 0.0019529228827472633,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.04538873615236771,
+            "before_imag": 0.00035077186610479974,
+            "after_real": 0.04343665615505255,
+            "after_imag": 0.00029340053145115617,
+            "before_magnitude": 0.04539009154442522,
+            "after_magnitude": 0.04343764705648915,
+            "absolute_complex_change": 0.0019529228827472635,
+            "radial_magnitude_difference": 0.0019524444879360711,
+            "angular_component": 4.3223922611590536e-05,
+            "phase_difference_deg": -0.055774174496599986
+          },
+          "maximum_relative_change": 0.04302531271248603,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.04538873615236771,
+            "before_imag": 0.00035077186610479974,
+            "after_real": 0.04343665615505255,
+            "after_imag": 0.00029340053145115617,
+            "before_magnitude": 0.04539009154442522,
+            "after_magnitude": 0.04343764705648915,
+            "absolute_complex_change": 0.0019529228827472635,
+            "radial_magnitude_difference": 0.0019524444879360711,
+            "angular_component": 4.3223922611590536e-05,
+            "phase_difference_deg": -0.055774174496599986
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "FEXT_S41": {
+          "maximum_absolute_change": 0.0007198282031896003,
+          "absolute_worst_frequency_hz": 6500000000.0,
+          "at_absolute_worst": {
+            "before_real": -0.017707815444103325,
+            "before_imag": -0.009712138619809636,
+            "after_real": -0.01841695737217857,
+            "after_imag": -0.009588565289544193,
+            "before_magnitude": 0.020196345322181983,
+            "after_magnitude": 0.020763547460886694,
+            "absolute_complex_change": 0.0007198282031896003,
+            "radial_magnitude_difference": 0.0005672021387047102,
+            "angular_component": 0.0004432091785556447,
+            "phase_difference_deg": -1.2400885102999908
+          },
+          "maximum_relative_change": 0.05566265514856387,
+          "relative_worst_frequency_hz": 250000000.0,
+          "at_relative_worst": {
+            "before_real": -3.0082647551562066e-05,
+            "before_imag": -0.00075332187232108,
+            "after_real": -3.277461626778985e-05,
+            "after_imag": -0.0007952007578841379,
+            "before_magnitude": 0.0007539222831307277,
+            "after_magnitude": 0.0007958758827926677,
+            "absolute_complex_change": 4.196531605472363e-05,
+            "radial_magnitude_difference": 4.195359966193996e-05,
+            "angular_component": 9.915780244184157e-07,
+            "phase_difference_deg": -0.0733438313900049
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "through_S43": {
+          "maximum_absolute_change": 0.029077336603028064,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.08148474651883389,
+            "before_imag": -0.9852295118348235,
+            "after_real": 0.1096754771805279,
+            "after_imag": -0.9781039094963808,
+            "before_magnitude": 0.9885934224470256,
+            "after_magnitude": 0.984233695860328,
+            "absolute_complex_change": 0.029077336603028064,
+            "radial_magnitude_difference": 0.004359726586697588,
+            "angular_component": 0.028748639759387542,
+            "phase_difference_deg": 1.6699264062499957
+          },
+          "maximum_relative_change": 0.0294128364025062,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.08148474651883389,
+            "before_imag": -0.9852295118348235,
+            "after_real": 0.1096754771805279,
+            "after_imag": -0.9781039094963808,
+            "before_magnitude": 0.9885934224470256,
+            "after_magnitude": 0.984233695860328,
+            "absolute_complex_change": 0.029077336603028064,
+            "radial_magnitude_difference": 0.004359726586697588,
+            "angular_component": 0.028748639759387542,
+            "phase_difference_deg": 1.6699264062499957
+          },
+          "relative_denominator_floor": 0.0001
+        }
+      },
+      "domain": {
+        "maximum_all_S_absolute_change": 0.006010662076306902,
+        "worst_term": "S21",
+        "worst_frequency_hz": 10000000000.0,
+        "worst_term_components": {
+          "before_real": 0.10433573888149127,
+          "before_imag": -0.9792294592556451,
+          "after_real": 0.11020115230431193,
+          "after_imag": -0.9805428457086547,
+          "before_magnitude": 0.9847721971512243,
+          "after_magnitude": 0.9867160514756131,
+          "absolute_complex_change": 0.006010662076306902,
+          "radial_magnitude_difference": 0.0019438543243888162,
+          "angular_component": 0.005687661115178101,
+          "phase_difference_deg": 0.33059247285000326
+        },
+        "NEXT_S42": {
+          "maximum_absolute_change": 0.0008509291340311427,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.04343665615505255,
+            "before_imag": 0.00029340053145115617,
+            "after_real": 0.04425703778919954,
+            "after_imag": 6.744840046472386e-05,
+            "before_magnitude": 0.04343764705648915,
+            "after_magnitude": 0.044257089185365105,
+            "absolute_complex_change": 0.0008509291340311428,
+            "radial_magnitude_difference": 0.0008194421288759551,
+            "angular_component": 0.00022933597311854118,
+            "phase_difference_deg": -0.2996889571755
+          },
+          "maximum_relative_change": 0.01958966913941123,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.04343665615505255,
+            "before_imag": 0.00029340053145115617,
+            "after_real": 0.04425703778919954,
+            "after_imag": 6.744840046472386e-05,
+            "before_magnitude": 0.04343764705648915,
+            "after_magnitude": 0.044257089185365105,
+            "absolute_complex_change": 0.0008509291340311428,
+            "radial_magnitude_difference": 0.0008194421288759551,
+            "angular_component": 0.00022933597311854118,
+            "phase_difference_deg": -0.2996889571755
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "FEXT_S41": {
+          "maximum_absolute_change": 0.0006403869501404194,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": -0.031031174041094085,
+            "before_imag": 0.004423522464305824,
+            "after_real": -0.031005169944188515,
+            "after_imag": 0.0037836637042233555,
+            "before_magnitude": 0.031344876987490146,
+            "after_magnitude": 0.031235183276149797,
+            "absolute_complex_change": 0.0006403869501404195,
+            "radial_magnitude_difference": 0.00010969371134034872,
+            "angular_component": 0.000630922131171928,
+            "phase_difference_deg": 1.1553150674000294
+          },
+          "maximum_relative_change": 0.020430354548719398,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": -0.031031174041094085,
+            "before_imag": 0.004423522464305824,
+            "after_real": -0.031005169944188515,
+            "after_imag": 0.0037836637042233555,
+            "before_magnitude": 0.031344876987490146,
+            "after_magnitude": 0.031235183276149797,
+            "absolute_complex_change": 0.0006403869501404195,
+            "radial_magnitude_difference": 0.00010969371134034872,
+            "angular_component": 0.000630922131171928,
+            "phase_difference_deg": 1.1553150674000294
+          },
+          "relative_denominator_floor": 0.0001
+        },
+        "through_S43": {
+          "maximum_absolute_change": 0.0026011050306476214,
+          "absolute_worst_frequency_hz": 10000000000.0,
+          "at_absolute_worst": {
+            "before_real": 0.1096754771805279,
+            "before_imag": -0.9781039094963808,
+            "after_real": 0.10961760573923496,
+            "after_imag": -0.9807043706625479,
+            "before_magnitude": 0.984233695860328,
+            "after_magnitude": 0.9868115737690891,
+            "absolute_complex_change": 0.002601105030647622,
+            "radial_magnitude_difference": 0.0025778779087610726,
+            "angular_component": 0.0003468326224305174,
+            "phase_difference_deg": -0.020163983919991864
+          },
+          "maximum_relative_change": 0.0026427717742115815,
+          "relative_worst_frequency_hz": 10000000000.0,
+          "at_relative_worst": {
+            "before_real": 0.1096754771805279,
+            "before_imag": -0.9781039094963808,
+            "after_real": 0.10961760573923496,
+            "after_imag": -0.9807043706625479,
+            "before_magnitude": 0.984233695860328,
+            "after_magnitude": 0.9868115737690891,
+            "absolute_complex_change": 0.002601105030647622,
+            "radial_magnitude_difference": 0.0025778779087610726,
+            "angular_component": 0.0003468326224305174,
+            "phase_difference_deg": -0.020163983919991864
+          },
+          "relative_denominator_floor": 0.0001
+        }
+      },
+      "local_mesh": {
+        "coarse": {
+          "centroid_probe_bounds_mm": [
+            -1.0,
+            -0.4,
+            0,
+            1.0,
+            0.4,
+            0.2
+          ],
+          "selected_tetrahedra": 363,
+          "longest_edge_mm_p10_median_p90": [
+            0.18242685170287035,
+            0.26891633480840754,
+            0.36976223851241696
+          ],
+          "xyz_extent_mm_p10_median_p90": [
+            [
+              0.07190127853118293,
+              0.07432673486189822,
+              0.11574144212753117
+            ],
+            [
+              0.15345951508272515,
+              0.16543968331362377,
+              0.2
+            ],
+            [
+              0.3157746606879216,
+              0.30750218168848004,
+              0.2
+            ]
+          ],
+          "scope": "Centroid/edge statistics indicate resolution; they are not an EM error estimator."
+        },
+        "channel": {
+          "centroid_probe_bounds_mm": [
+            -1.0,
+            -0.4,
+            0,
+            1.0,
+            0.4,
+            0.2
+          ],
+          "selected_tetrahedra": 591,
+          "longest_edge_mm_p10_median_p90": [
+            0.13043718417907071,
+            0.2102764796119212,
+            0.3236734258214344
+          ],
+          "xyz_extent_mm_p10_median_p90": [
+            [
+              0.05353741447012578,
+              0.04941040228196841,
+              0.09625407657469622
+            ],
+            [
+              0.1135253669114955,
+              0.11339989926426497,
+              0.1385728628677899
+            ],
+            [
+              0.26265385773033395,
+              0.25726319033939493,
+              0.2
+            ]
+          ],
+          "scope": "Centroid/edge statistics indicate resolution; they are not an EM error estimator."
+        }
+      },
+      "eye_variants": {
+        "coarse": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0011440230587251518,
+            "minimum_high_at_fixed_center_v": 0.7488559769412748,
+            "observed_center_opening_v": 0.7477119538825496
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.0027136448311987946,
+            "minimum_high_at_fixed_center_v": 0.7472863551688014,
+            "observed_center_opening_v": 0.7445727103376025
+          },
+          "switching_minus_quiet_peak_v": 0.0033217319285269733,
+          "opening_reduction_v": 0.0031392435449471012,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "channel": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0010919904612610983,
+            "minimum_high_at_fixed_center_v": 0.7489080095387398,
+            "observed_center_opening_v": 0.7478160190774787
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.002622913951793374,
+            "minimum_high_at_fixed_center_v": 0.7473770860482073,
+            "observed_center_opening_v": 0.7447541720964139
+          },
+          "switching_minus_quiet_peak_v": 0.0032225537236440665,
+          "opening_reduction_v": 0.0030618469810648197,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "domain": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0011027090504529252,
+            "minimum_high_at_fixed_center_v": 0.7488972909495478,
+            "observed_center_opening_v": 0.7477945818990949
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.002635814935916148,
+            "minimum_high_at_fixed_center_v": 0.7473641850640846,
+            "observed_center_opening_v": 0.7447283701281685
+          },
+          "switching_minus_quiet_peak_v": 0.0032711389167689978,
+          "opening_reduction_v": 0.0030662117709263637,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "frequency_decimated": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0011530892269128797,
+            "minimum_high_at_fixed_center_v": 0.7488469107730876,
+            "observed_center_opening_v": 0.7476938215461747
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.002682522102207347,
+            "minimum_high_at_fixed_center_v": 0.7473174778977932,
+            "observed_center_opening_v": 0.7446349557955859
+          },
+          "switching_minus_quiet_peak_v": 0.00322945263122045,
+          "opening_reduction_v": 0.0030588657505887795,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "bandwidth_80_percent": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 2.1053118096539834e-16,
+            "minimum_high_at_fixed_center_v": 0.7500000000000007,
+            "observed_center_opening_v": 0.7500000000000004
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.0015154096177052256,
+            "minimum_high_at_fixed_center_v": 0.7484845903822962,
+            "observed_center_opening_v": 0.746969180764591
+          },
+          "switching_minus_quiet_peak_v": 0.003264293552338737,
+          "opening_reduction_v": 0.0030308192354094876,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "time_step_halved": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.0009685886329458422,
+            "minimum_high_at_fixed_center_v": 0.7490314113670541,
+            "observed_center_opening_v": 0.7480628227341083
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.002505558064680494,
+            "minimum_high_at_fixed_center_v": 0.7474944419353191,
+            "observed_center_opening_v": 0.7449888838706387
+          },
+          "switching_minus_quiet_peak_v": 0.0032119213065751008,
+          "opening_reduction_v": 0.0030739388634696274,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        },
+        "FIR_support_extended": {
+          "quiet": {
+            "maximum_low_at_fixed_center_v": 0.001404193156457246,
+            "minimum_high_at_fixed_center_v": 0.7485958068435424,
+            "observed_center_opening_v": 0.7471916136870852
+          },
+          "switching": {
+            "maximum_low_at_fixed_center_v": 0.0029479398455799955,
+            "minimum_high_at_fixed_center_v": 0.7470520601544187,
+            "observed_center_opening_v": 0.7441041203088388
+          },
+          "switching_minus_quiet_peak_v": 0.0032295569608304154,
+          "opening_reduction_v": 0.003087493378246431,
+          "definition": "Finite deterministic pattern at one fixed sampling phase; not a statistical BER, eye mask or DDR compliance result"
+        }
+      },
+      "original_checks": {
+        "loaded_waveform_mesh_change_v": 0.0019097988866730309,
+        "fixed_center_opening_mesh_change_v": 0.00018146175881139648,
+        "time_step_halving_change_v": 0.0002580552747052378,
+        "frequency_grid_decimation_change_v": 0.00013585377660950502,
+        "bandwidth_80_percent_change_v": 0.002442109442982087,
+        "causal_fir_support_extension_change_v": 0.0008268200227389277,
+        "maximum_all_complex_S_mesh_change": 0.03914802135426984,
+        "maximum_selected_complex_coupling_relative_mesh_change": 0.05566265514856387,
+        "relative_coupling_denominator_floor": 0.0001,
+        "mesh_field_tetrahedra": [
+          20602,
+          30243
+        ],
+        "voltage_tolerance_v": 0.005,
+        "status": "passed",
+        "scope": "Local educational loaded-voltage checks; not full complex coupling convergence, asymptotic error bound or global SI qualification",
+        "domain_loaded_waveform_change_v": 0.00011026935636102651,
+        "domain_maximum_all_complex_S_change": 0.006010662076306901,
+        "domain_maximum_selected_complex_coupling_relative_change": 0.020430354548719398,
+        "air_padding_mm": [
+          1,
+          1.5
+        ],
+        "truncation_convergence": "passed",
+        "frequency_status": "passed",
+        "full_complex_channel_mesh_status": "failed",
+        "full_complex_channel_mesh_criteria": {
+          "maximum_all_S_absolute": 0.01,
+          "maximum_selected_coupling_relative": 0.05
+        },
+        "zero_drive_control_v": 0.0,
+        "quiet_control": "Same native coupled channel, aggressor source held at0V; linear superposition"
+      },
+      "solver": {
+        "coarse": {
+          "converged_excitations": 164,
+          "maximum_logged_initial_to_final_KSP_norm_ratio": 1.326831013411756e-09,
+          "scope": "Logged norm reduction; no independent true unpreconditioned-residual bound."
+        },
+        "channel": {
+          "converged_excitations": 164,
+          "maximum_logged_initial_to_final_KSP_norm_ratio": 1.5003609898107715e-08,
+          "scope": "Logged norm reduction; no independent true unpreconditioned-residual bound."
+        },
+        "domain": {
+          "converged_excitations": 164,
+          "maximum_logged_initial_to_final_KSP_norm_ratio": 2.3880911000362885e-09,
+          "scope": "Logged norm reduction; no independent true unpreconditioned-residual bound."
+        }
+      }
+    }
+  },
+  "ranking": {
+    "coarse": {
+      "close_added_noise_peak_v": 0.03215703952686126,
+      "separated_added_noise_peak_v": 0.0033217319285269733,
+      "added_noise_difference_v": 0.02883530759833429,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.03544354176625675,
+      "separated_opening_reduction_v": 0.0031392435449471012
+    },
+    "channel": {
+      "close_added_noise_peak_v": 0.030060282876934397,
+      "separated_added_noise_peak_v": 0.0032225537236440665,
+      "added_noise_difference_v": 0.02683772915329033,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.0338172672029915,
+      "separated_opening_reduction_v": 0.0030618469810648197
+    },
+    "domain": {
+      "close_added_noise_peak_v": 0.03001775973344528,
+      "separated_added_noise_peak_v": 0.0032711389167689978,
+      "added_noise_difference_v": 0.026746620816676284,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.033823036196912404,
+      "separated_opening_reduction_v": 0.0030662117709263637
+    },
+    "frequency_decimated": {
+      "close_added_noise_peak_v": 0.03002885540364524,
+      "separated_added_noise_peak_v": 0.00322945263122045,
+      "added_noise_difference_v": 0.02679940277242479,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.03383080659665727,
+      "separated_opening_reduction_v": 0.0030588657505887795
+    },
+    "bandwidth_80_percent": {
+      "close_added_noise_peak_v": 0.030035867266246838,
+      "separated_added_noise_peak_v": 0.003264293552338737,
+      "added_noise_difference_v": 0.0267715737139081,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.03384617424651659,
+      "separated_opening_reduction_v": 0.0030308192354094876
+    },
+    "time_step_halved": {
+      "close_added_noise_peak_v": 0.03012110604806378,
+      "separated_added_noise_peak_v": 0.0032119213065751008,
+      "added_noise_difference_v": 0.02690918474148868,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.034004866724651084,
+      "separated_opening_reduction_v": 0.0030739388634696274
+    },
+    "FIR_support_extended": {
+      "close_added_noise_peak_v": 0.030057829387357023,
+      "separated_added_noise_peak_v": 0.0032295569608304154,
+      "added_noise_difference_v": 0.026828272426526606,
+      "smaller_added_noise_case": "separated",
+      "close_opening_reduction_v": 0.03386471391067747,
+      "separated_opening_reduction_v": 0.003087493378246431
+    }
+  },
+  "interpretation": {
+    "supported_cause": "Spatial discretization sensitivity with fixed physical CAD, apertures and testbench. Volume and port meshes changed together; their isolated errors and true residual remain unproven.",
+    "why_eye_checks_pass": "The eye uses S43/S42, while the largest relative gate failure is S41. The 200ps ramp suppresses high-frequency drift. Stable loaded-voltage checks do not qualify the full channel.",
+    "frequency_scope": "Resampling/truncating/refitting one native grid is a local sensitivity, not an independently finer-frequency solve or global error bound.",
+    "ranking_scope": "Weaker/stronger refers to added-noise peak in this testbench. It is not universal good/bad: FEXT magnitude ranking can differ or reverse with refinement.",
+    "next_probe_not_run": "Keep exact physical/port/setup inputs. Test a local volumetric size box covering both traces, gap and full dielectric thickness at0.25,1,10GHz before another sweep; audit port contacts and true residual. No result promotion from one sensitivity.",
+    "qualification": "Both original full-channel mesh gates remain failed; thresholds, drivers and alignment are unchanged."
+  },
+  "original_native_snapshot_revision": "457058b1bd4394ee6f4fc5a50b5fc70eceded3f5",
+  "diagnostic_source_sha256": {
+    "python/diagnose.py": "65b5e94bfc7e1a523e86d5a3b65adce80c4a134b559aad10e7453711502d0886",
+    "python/eyes.py": "7d4970b804f08f1435957abc2fa00d11f75835cff01078c17b5d3484936d93ca"
+  },
+  "validation_update": {
+    "transition_guard": "A shorter transition coarsens the interior; refinement now requires transition_mm >= coarse transition_mm",
+    "existing_results": "Original transition is0.4mm in both cases; all original failed gates and eye metrics remain unchanged",
+    "negative_probes": "Changed physical port, extended CAD, transition region and loading all rejected",
+    "new_native_runs": 0
+  }
+}
