@@ -35,7 +35,33 @@ export interface NativeNoiseOutputs {
 
 const hash = (bytes: string | Uint8Array) =>
   createHash("sha256").update(bytes).digest("hex")
-const shaPattern = /^[a-f0-9]{64}$/
+const verifiedOutputs = new WeakMap<NativeNoiseOutputs, NativeNoiseOutputs>()
+
+function unchanged(value: unknown, original: unknown): boolean {
+  if (Object.is(value, original)) return true
+  if (
+    !value ||
+    !original ||
+    typeof value !== "object" ||
+    typeof original !== "object" ||
+    Array.isArray(value) !== Array.isArray(original) ||
+    (Array.isArray(value) && value.length !== (original as unknown[]).length) ||
+    Object.getPrototypeOf(value) !== Object.getPrototypeOf(original)
+  )
+    return false
+  const keys = Object.keys(value)
+  return (
+    keys.length === Object.keys(original).length &&
+    keys.every(
+      (key) =>
+        Object.hasOwn(original, key) &&
+        unchanged(
+          (value as Record<string, unknown>)[key],
+          (original as Record<string, unknown>)[key],
+        ),
+    )
+  )
+}
 
 /** Consume the existing native summary and full-resolution eyes.py CSV, without a solve or refit. */
 export async function readNativeNoiseOutputs(
@@ -91,7 +117,7 @@ export async function readNativeNoiseOutputs(
   )
     throw new Error("Malformed native waveform CSV")
   const column = (i: number) => rows.map((row) => row[i]!)
-  return {
+  const output: NativeNoiseOutputs = {
     circuit_json: JSON.parse(circuitBytes),
     model: JSON.parse(modelBytes),
     input_sha256: hash(circuitBytes),
@@ -107,14 +133,16 @@ export async function readNativeNoiseOutputs(
       noise: column(5),
     },
   }
+  verifiedOutputs.set(output, structuredClone(output))
+  return output
 }
 
 function validateOutputs(input: NativeNoiseOutputs) {
-  if (
-    !shaPattern.test(input.input_sha256) ||
-    !shaPattern.test(input.model_sha256)
-  )
-    throw new Error("Explicit input and model hashes are required")
+  const original = verifiedOutputs.get(input)
+  if (!original || !unchanged(input, original))
+    throw new Error(
+      "Native output provenance requires the unchanged object returned by readNativeNoiseOutputs",
+    )
   const samples = [...input.samples].sort(
     (a, b) => a.frequency_hz - b.frequency_hz,
   )
