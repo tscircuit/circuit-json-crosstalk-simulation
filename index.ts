@@ -3,6 +3,15 @@ import { run } from "./lib/run"
 import type { AnalysisSetup, CircuitJson } from "./lib/types"
 
 export type { AnalysisResult, AnalysisSetup, CircuitJson } from "./lib/types"
+export {
+  exportNativeNoiseAssets,
+  nativeNoiseWaveforms,
+  readNativeNoiseOutputs,
+} from "./lib/noise-interoperability"
+export type {
+  NativeNoiseOutputs,
+  NativeNoisePort,
+} from "./lib/noise-interoperability"
 
 /** Run the real Palace simulation; setup supplies the explicit testbench choices. */
 export function simulate(

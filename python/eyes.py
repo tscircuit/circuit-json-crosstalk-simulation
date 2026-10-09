@@ -45,6 +45,8 @@ def channel(directory):
     return f, s, model, {'source_csv':str(directory/'postpro/port-S.csv'),
         'source_csv_sha256':hashlib.sha256((directory/'postpro/port-S.csv').read_bytes()).hexdigest(),
         'circuit_json_sha256':hashlib.sha256((directory/'circuit.json').read_bytes()).hexdigest(),
+        'source_summary_sha256':hashlib.sha256((directory/'summary.json').read_bytes()).hexdigest(),
+        'source_model_sha256':hashlib.sha256((directory/'model.json').read_bytes()).hexdigest(),
         'dc_model':'Ideal PEC connects P1-P2 and P3-P4; distinct signal conductors remain electrically isolated at DC',
         'dc_anchor_max_complex_difference_at_lowest_native_frequency':dc_error,
         'native_frequency_count':len(f), 'independent_converged_excitations':summary['independent_converged_excitations'],
@@ -259,6 +261,7 @@ def process(root):
         waves[name]=w;models[name]=model
         layout(model,root/f'{name}-layout.png',name.capitalize()+' spacing')
         np.savetxt(root/f'{name}-waveforms.csv',np.column_stack([w[k] for k in ['t','victim_source','aggressor_source','quiet','switching','noise']]),delimiter=',',header='time_s,victim_source_v,aggressor_source_v,victim_quiet_v,victim_switching_v,added_noise_v',comments='')
+        reports[name]['provenance']['waveform_csv_sha256']=hashlib.sha256((root/f'{name}-waveforms.csv').read_bytes()).hexdigest()
     # Physical comparison is spacing only; no widths, lengths, materials or loads vary.
     a,b=models.values()
     for key in ['board','stackup','reference','setup']:
